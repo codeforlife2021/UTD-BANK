@@ -28,20 +28,16 @@ const RegisterForm = () => {
     firstName: Yup.string().required("Please enter your first name"),
     ssn: Yup.string()
       .required("Please enter your SSN")
-      .test(
-        "includes_",
-        "Please enter a valid SSN",
-        (value) => value && !value.includes("_")
-      ),
+      .test("len", "Please enter a valid SSN", (val) => val.length === 11),
     lastName: Yup.string().required("Please enter your last name"),
 
     email: Yup.string().email().required("Please Enter your email"),
     mobilePhoneNumber: Yup.string()
       .required("Please enter your phone number")
       .test(
-        "includes_",
+        "len",
         "Please enter a valid phone number",
-        (value) => value && !value.includes("_")
+        (val) => val.length === 14
       ),
     address: Yup.string().required("Please enter your address"),
     username: Yup.string().required("Please enter your username"),
