@@ -10,6 +10,7 @@ import TermsPage from "../pages/TermsPage";
 import PricingPage from "../pages/PricingPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import AuthenticationPage from "../pages/AuthenticationPage";
+import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 
 const CustomRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const CustomRoutes = () => {
       <Route path="/terms-conditions" element={<TermsPage />} />
       <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
       <Route path="/authentication" element={<AuthenticationPage />} />
+      <Route path="/forgetPassword" element={<ForgetPasswordPage />} />
     </Routes>
   );
 };

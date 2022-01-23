@@ -1,6 +1,9 @@
 import React from "react";
 import Menu from "./Menu";
+import { useStore } from "./../../store/index";
+import { logout } from "../../store/user/userActions";
 
+import UserMenu from "./UserMenu";
 const TopBar = () => {
   return (
     <div className="fixed-top">
@@ -9,13 +12,7 @@ const TopBar = () => {
           <a href="index.html" className="logo">
             <img src="assets/images/logo.png" alt="logo" />
           </a>
-          <div className="navbar-option">
-            <div className="navbar-option-item">
-              <a href="authentication.html">
-                <i className="flaticon-login"></i>
-              </a>
-            </div>
-          </div>
+          <UserMenu />
         </div>
 
         <Menu />

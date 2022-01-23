@@ -1,6 +1,18 @@
 import React from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useStore } from "../../store";
+import { logout } from "../../store/user/userActions";
+import UserMenu from "./UserMenu";
 const Menu = () => {
+  const { userState, dispatchUser } = useStore();
+  const { user, isUserLogin } = userState;
+
+  const handleLogout = () => {
+    dispatchUser(logout());
+    localStorage.removeItem("token");
+  };
+
   return (
     <div className="main-nav">
       <div className="container-fluid">
@@ -41,18 +53,7 @@ const Menu = () => {
             </ul>
           </div>
 
-          <div className="navbar-option">
-            <div className="navbar-option-item">
-              <Link
-                to="/authentication"
-                className="btn1 blue-gradient btn-with-image text-nowrap"
-              >
-                <i className="flaticon-login"></i>
-                <i className="flaticon-login"></i>
-                Sign Up / Login
-              </Link>
-            </div>
-          </div>
+          <UserMenu />
         </nav>
       </div>
     </div>
