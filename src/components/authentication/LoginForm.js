@@ -22,11 +22,7 @@ const LoginForm = () => {
   const validationSchema = Yup.object({
     ssn: Yup.string()
       .required("Please enter your SSN")
-      .test(
-        "includes_",
-        "Please enter a valid SSN",
-        (value) => value && !value.includes("_")
-      ),
+      .test("len", "Please enter a valid SSN", (val) => val.length === 11),
     password: Yup.string().required("Please enter your password"),
   });
 
