@@ -14,6 +14,8 @@ import AccountDetailManagementPage from "../pages/employee-manager/AccountDetail
 import AccountManagementPage from "../pages/employee-manager/AccountManagementPage";
 import UserDetailsManagementPage from "../pages/employee-manager/UserDetailsManagementPage";
 import UserManagementPage from "../pages/employee-manager/UserManagementPage";
+import ForgetPasswordPage from "../pages/ForgetPasswordPage";
+import ProfilePage from "../pages/user/ProfilePage";
 
 const CustomRoutes = () => {
   return (
@@ -37,9 +39,11 @@ const CustomRoutes = () => {
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/features" element={<FeaturesPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
 
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />
+      <Route path="/forget-password" element={<ForgetPasswordPage />} />
       <Route path="/faqs" element={<FaqsPage />} />
       <Route path="/terms-conditions" element={<TermsPage />} />
       <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

@@ -7,6 +7,28 @@ body {
   position: relative;
   background-color: #fff;
 }
+.spinner-loading {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner-loading .spinner-border {
+  width: 25rem !important;
+  height: 25rem !important;
+}
+
+.spinner-loading .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ajs-header {
+  background-color: #ec570e;
+}
 .mt-5 {
   margin-top: 5px;
 }
@@ -3688,8 +3710,9 @@ button:active {
 }
 .page-bg {
   background-repeat: no-repeat;
-  background-position: 40% 100%;
+  /* background-position: 50% 100%; */
   background-size: cover;
+  background-position: center;
   padding: 210px 0 120px;
   position: relative;
 }

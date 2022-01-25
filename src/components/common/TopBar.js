@@ -1,7 +1,5 @@
 import React from "react";
 import Menu from "./Menu";
-import { useStore } from "./../../store/index";
-import { logout } from "../../store/user/userActions";
 
 import UserMenu from "./UserMenu";
 const TopBar = () => {
