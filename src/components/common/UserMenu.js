@@ -1,17 +1,27 @@
 import React from "react";
 import { useStore } from "../../store";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 
 import { logout } from "../../store/user/userActions";
+import alertify from "alertifyjs";
 const UserMenu = () => {
   const { userState, dispatchUser } = useStore();
   const { user, isUserLogin } = userState;
-  const hasWindow = typeof window !== "undefined";
-
+  const navigate = useNavigate();
   const handleLogout = () => {
-    dispatchUser(logout());
-    localStorage.removeItem("token");
+    alertify.confirm(
+      "Logout",
+      "Are you sure you want to logout?",
+      () => {
+        dispatchUser(logout());
+        localStorage.removeItem("token");
+        navigate("/");
+      },
+      () => {
+        console.log("canceled");
+      }
+    );
   };
   return (
     <div className="navbar-option">
@@ -21,9 +31,6 @@ const UserMenu = () => {
             id="dropdown-basic-button"
             title={`Welcome ${user.firstName}`}
           >
-            <Dropdown.Item as={Link} to="#">
-              Account
-            </Dropdown.Item>
             <Dropdown.Item as={Link} to="/profile">
               Profile
             </Dropdown.Item>

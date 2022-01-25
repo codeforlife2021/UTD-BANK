@@ -44,8 +44,8 @@ const RegisterForm = () => {
     password: Yup.string()
       .required("Please Enter your password")
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#._\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special (!@#.%_&) Case Character"
       ),
     confirmPassword: Yup.string()
       .required("Please enter your password again")
@@ -61,7 +61,7 @@ const RegisterForm = () => {
       .then((resp) => {
         setLoading(false);
         toast("You are registered successfully. ");
-        navigate("/authentication");
+        navigate("/");
       })
       .catch((err) => {
         console.log("Registration failed");
