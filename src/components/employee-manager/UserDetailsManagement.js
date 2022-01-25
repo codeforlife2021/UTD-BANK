@@ -18,7 +18,7 @@ import {
   updateCustomer,
 } from "../../api/management-customer-service";
 import alertify from "alertifyjs";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 const UserDetailsManagement = () => {
   const [initialValues, setInitialValues] = useState({
@@ -216,7 +216,13 @@ const UserDetailsManagement = () => {
           </Button>
           {!initialValues.builtIn && (
             <>
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                type="submit"
+                as={Link}
+                to="/account-management"
+                size="sm"
+              >
                 Hesaplar
               </Button>
               <Button
