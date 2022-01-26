@@ -3,8 +3,8 @@ import authHeader from "./auth-header";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const createAccount = () => {
-  return axios.post(`${API_URL}account/create`, {
+const createAccount = (account) => {
+  return axios.post(`${API_URL}account/create`, account, {
     headers: authHeader(),
   });
 };
@@ -15,8 +15,8 @@ const getAccounts = () => {
   });
 };
 
-const getAccount = (accountId) => {
-  return axios.get(`${API_URL}account/${accountId}/user`, {
+const getAccount = (accountNo) => {
+  return axios.get(`${API_URL}account/${accountNo}/user`, {
     headers: authHeader(),
   });
 };
