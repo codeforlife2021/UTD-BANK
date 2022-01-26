@@ -15,7 +15,9 @@ import AccountManagementPage from "../pages/employee-manager/AccountManagementPa
 import UserDetailsManagementPage from "../pages/employee-manager/UserDetailsManagementPage";
 import UserManagementPage from "../pages/employee-manager/UserManagementPage";
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
-import ProfilePage from "../pages/user/ProfilePage";
+import ProfilePage from "../pages/customer/ProfilePage";
+import MyAccountPage from "../pages/customer/MyAccountPage";
+import NewAccountPage from "./../pages/customer/NewAccountPage";
 
 const CustomRoutes = () => {
   return (
@@ -33,13 +35,14 @@ const CustomRoutes = () => {
       <Route path="/user-management" element={<UserManagementPage />} />
 
       {/* CUSTOMER ROUTES */}
-
+      <Route path="/my-account" element={<MyAccountPage />} />
+      <Route path="/create-account" element={<NewAccountPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       {/*ALL USER */}
       <Route path="/" element={<HomePage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/features" element={<FeaturesPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
 
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />

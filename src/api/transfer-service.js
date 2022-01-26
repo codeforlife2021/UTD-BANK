@@ -3,8 +3,8 @@ import authHeader from "./auth-header";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const createTransfer = () => {
-  return axios.post(`${API_URL}transfer/create`, {
+const createTransfer = (transfer) => {
+  return axios.post(`${API_URL}transfer/create`, transfer, {
     headers: authHeader(),
   });
 };

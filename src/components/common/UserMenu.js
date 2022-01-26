@@ -34,6 +34,9 @@ const UserMenu = () => {
             <Dropdown.Item as={Link} to="/profile">
               Profile
             </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/my-account">
+              My-Account
+            </Dropdown.Item>
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </DropdownButton>
         ) : (
