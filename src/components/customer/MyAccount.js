@@ -2,23 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Table, Spinner, Button, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAccount, getAccounts } from "../../api/account-service";
+import { getTransfersbyAccount } from "../../api/transfer-service";
 
 const MyAccount = () => {
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
   const [accountDetail, setAccountDetail] = useState({});
-
+  const [transfers, setTransfers] = useState([]);
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
+  const [showTransfer, setShowTransfer] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShowDetail(false);
 
   const showDetails = (id) => {
-    setShow(true);
-
+    setShowDetail(true);
     getAccount(id).then((resp) => {
       setAccountDetail(resp.data);
+    });
+  };
+  const transferDetail = (id) => {
+    setShowTransfer(true);
+    getTransfersbyAccount(id).then((resp) => {
+      setTransfers(resp.data);
     });
   };
 
@@ -64,6 +70,14 @@ const MyAccount = () => {
                   variant="primary"
                   onClick={() => showDetails(item.accountNo)}
                 >
+                  Account <br /> Details
+                </Button>
+                &nbsp;
+                <Button
+                  variant="primary"
+                  onClick={() => transferDetail(item.accountNo)}
+                >
+                  Transfer <br />
                   Details
                 </Button>
               </td>
@@ -71,7 +85,11 @@ const MyAccount = () => {
           ))}
         </tbody>
 
-        <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal
+          show={showDetail}
+          onHide={() => setShowDetail(false)}
+          animation={false}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Accounts Details</Modal.Title>
           </Modal.Header>
@@ -114,6 +132,54 @@ const MyAccount = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        <Modal
+          show={showTransfer}
+          onHide={() => setShowTransfer(false)}
+          animation={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Transfer Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Table striped bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>From transfer</th>
+                  <th>To transfer</th>
+                  <th>Currency Code</th>
+                  <th>Transaction transfer</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loading && (
+                  <tr>
+                    <td colSpan={5}>
+                      <Spinner animation="border" size="sm" /> Loading...
+                    </td>
+                  </tr>
+                )}
+                {transfers.map((item, index) => (
+                  <tr key={index} className="cursor-hand">
+                    <td>{index + 1}</td>
+                    <td>{item.fromAccountId}</td>
+                    <td>{item.toAccountId}</td>
+                    <td>{item.transactionAmount}</td>
+                    <td>{item.currencyCode}</td>
+                    <td>{item.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={() => setShowTransfer(false)}>
               Close
             </Button>
           </Modal.Footer>

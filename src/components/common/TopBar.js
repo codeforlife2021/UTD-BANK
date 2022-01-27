@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 import UserMenu from "./UserMenu";
@@ -7,9 +8,9 @@ const TopBar = () => {
     <div className="fixed-top">
       <div className="navbar-area">
         <div className="mobile-nav">
-          <a href="index.html" className="logo">
+          <Link to="/" className="logo">
             <img src="assets/images/logo.png" alt="logo" />
-          </a>
+          </Link>
           <UserMenu />
         </div>
 

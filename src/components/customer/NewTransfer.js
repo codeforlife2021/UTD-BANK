@@ -16,22 +16,24 @@ import { FaRegAddressBook } from "react-icons/fa";
 import { MdDescription } from "react-icons/md";
 import { GiMoneyStack } from "react-icons/gi";
 import { createAccount } from "../../api/account-service";
-const NewAccount = () => {
+import { createTransfer } from "../../api/transfer-service";
+const NewTransfer = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const initialValues = {
-    description: "",
-    balance: "",
+    fromAccountId: "",
+    toAccountId: "",
+    transactionAmount: "",
     currencyCode: "",
-    accountType: "",
+    description: "",
   };
 
   const validationSchema = Yup.object({
     description: Yup.string().required("Please enter your description"),
-    balance: Yup.string().required("Please enter your balance"),
-
-    balance: Yup.string()
-      .required("Please Enter your balance")
+    fromAccountId: Yup.string().required("Please enter an AccountId"),
+    toAccountId: Yup.string().required("Please enter an AccountId"),
+    transactionAmount: Yup.string()
+      .required("Please Enter your Transaction Amount")
       .matches(/^(?=.*[0-9])/, "Must Contain Nummer "),
     currencyCode: Yup.string()
       .required("Please enter your currency Code")
@@ -40,25 +42,17 @@ const NewAccount = () => {
         "Please select a currency Code",
         (value) => value && !value.includes("Currency Code")
       ),
-
-    accountType: Yup.string()
-      .required("Please enter your Account Type")
-      .test(
-        "includes_",
-        "Please select a Account Type",
-        (value) => value && !value.includes("Account Type")
-      ),
   });
 
   const onSubmit = (values) => {
     console.log(values);
     setLoading(true);
 
-    createAccount(values)
+    createTransfer(values)
       .then((resp) => {
         setLoading(false);
-        toast("A new Account has been created. ");
-        navigate("/my-account");
+        toast("A new Transfer has been created. ");
+        navigate("/my-transfers");
       })
       .catch((err) => {
         console.log(" failed");
@@ -89,12 +83,35 @@ const NewAccount = () => {
                 </div>
                 <Form.Control
                   type="text"
-                  {...formik.getFieldProps("description")}
-                  isInvalid={!!formik.errors.description}
-                  placeholder="Description *"
+                  {...formik.getFieldProps("fromAccountId")}
+                  isInvalid={!!formik.errors.fromAccountId}
+                  placeholder="From Account Id*"
                 />
                 <Form.Control.Feedback type="invalid">
-                  {formik.errors.description}
+                  {formik.errors.fromAccountId}
+                </Form.Control.Feedback>
+              </div>
+            </div>
+          </div>
+
+          <div className=" offset-3 col-sm-6 col-md-6 col-lg-6">
+            <div className="form-group mb-15">
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">
+                    <i>
+                      <MdDescription className="flaticon-user" />
+                    </i>
+                  </span>
+                </div>
+                <Form.Control
+                  type="text"
+                  {...formik.getFieldProps("toAccountId")}
+                  isInvalid={!!formik.errors.toAccountId}
+                  placeholder="to Account Id*"
+                />
+                <Form.Control.Feedback type="invalid">
+                  {formik.errors.toAccountId}
                 </Form.Control.Feedback>
               </div>
             </div>
@@ -112,15 +129,15 @@ const NewAccount = () => {
                 </div>
                 <Form.Control
                   type="text"
-                  {...formik.getFieldProps("balance")}
-                  isInvalid={!!formik.errors.ssn}
-                  placeholder="Balance *"
+                  {...formik.getFieldProps("transactionAmount")}
+                  isInvalid={!!formik.errors.transactionAmount}
+                  placeholder="Transaction Amount *"
                   as={MaskInput}
                   maskChar=""
                   mask="00000000000000"
-                  {...formik.getFieldProps("balance")}
-                  isInvalid={!!formik.errors.balance}
-                  placeholder="Balance *"
+                  {...formik.getFieldProps("transactionAmount")}
+                  isInvalid={!!formik.errors.transactionAmount}
+                  placeholder="transactionAmount *"
                 />
                 <Form.Control.Feedback type="invalid">
                   {formik.errors.balance}
@@ -154,32 +171,29 @@ const NewAccount = () => {
               </div>
             </div>
           </div>
-          <div className="offset-3 col-sm-6 col-md-6 col-lg-6">
+
+          <div className=" offset-3 col-sm-6 col-md-6 col-lg-6">
             <div className="form-group mb-15">
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">
                     <i>
-                      <FaRegAddressBook />
+                      <MdDescription className="flaticon-user" />
                     </i>
                   </span>
                 </div>
-                <Form.Select
-                  {...formik.getFieldProps("accountType")}
-                  isInvalid={!!formik.errors.accountType}
-                >
-                  <option value="">Account Type</option>
-                  <option value="SAVING">SAVING</option>
-                  <option value="CREDIT_CARD">CREDIT CARD</option>
-                  <option value="INVESTING">INVESTING</option>
-                </Form.Select>
+                <Form.Control
+                  type="text"
+                  {...formik.getFieldProps("description")}
+                  isInvalid={!!formik.errors.description}
+                  placeholder="Description *"
+                />
                 <Form.Control.Feedback type="invalid">
-                  {formik.errors.accountType}
+                  {formik.errors.description}
                 </Form.Control.Feedback>
               </div>
             </div>
           </div>
-
           <div className="offset-3 col-sm-6 col-md-6 col-lg-6">
             <button
               className="btn1 orange-gradient full-width"
@@ -187,7 +201,7 @@ const NewAccount = () => {
               disabled={loading}
             >
               {loading && <Spinner animation="border" size="sm" />}
-              Create New Account
+              Create New Transfer
             </button>
           </div>
         </div>
@@ -196,4 +210,4 @@ const NewAccount = () => {
   );
 };
 
-export default NewAccount;
+export default NewTransfer;

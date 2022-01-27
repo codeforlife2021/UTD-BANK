@@ -18,6 +18,8 @@ import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import ProfilePage from "../pages/customer/ProfilePage";
 import MyAccountPage from "../pages/customer/MyAccountPage";
 import NewAccountPage from "./../pages/customer/NewAccountPage";
+import MyTransferPage from "./../pages/customer/MyTransferPage";
+import NewTransferPage from "../pages/customer/NewTransferPage";
 
 const CustomRoutes = () => {
   return (
@@ -36,7 +38,9 @@ const CustomRoutes = () => {
 
       {/* CUSTOMER ROUTES */}
       <Route path="/my-account" element={<MyAccountPage />} />
+      <Route path="/my-transfers" element={<MyTransferPage />} />
       <Route path="/create-account" element={<NewAccountPage />} />
+      <Route path="/create-transfer" element={<NewTransferPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       {/*ALL USER */}
       <Route path="/" element={<HomePage />} />
