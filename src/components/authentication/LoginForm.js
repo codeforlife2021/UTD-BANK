@@ -15,7 +15,7 @@ const LoginForm = () => {
   const { dispatchUser } = useStore();
   const navigate = useNavigate();
   const initialValues = {
-    ssn: " 880-08-8686",
+    ssn: "880-08-8686",
     password: "admin0",
   };
 

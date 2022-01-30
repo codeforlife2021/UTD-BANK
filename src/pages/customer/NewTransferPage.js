@@ -9,7 +9,6 @@ import NewTransfer from "../../components/customer/NewTransfer";
 const NewTransferPage = () => {
   return (
     <>
-      <TopBar />
       <PageHeader
         image="/assets/images/feature-details-1.png"
         title="New Transfer"
@@ -24,7 +23,6 @@ const NewTransferPage = () => {
       </Container>
       <Spacer />
       <Spacer />
-      <Footer />
     </>
   );
 };

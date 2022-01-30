@@ -7,6 +7,9 @@ import LoadingPage from "./pages/LoadingPage";
 import { loginSuccess } from "./store/user/userActions";
 import { getUser } from "./api/user-service";
 import { useStore } from "./store";
+import TopBar from "./components/common/TopBar";
+import Footer from "./components/common/Footer";
+import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +37,9 @@ function App() {
   else
     return (
       <BrowserRouter>
+        <TopBar />
         <CustomRoutes />
+        <Footer />
         <ToastContainer />
       </BrowserRouter>
     );

@@ -11,14 +11,11 @@ const AccountUserPage = () => {
   const { userId } = useParams();
   return (
     <>
-      {" "}
-      <TopBar />
       <PageHeader title={`Owner of account number ${userId}`} />
       <Container className="mt-5">
         <AccountsUser userId={userId} />
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };

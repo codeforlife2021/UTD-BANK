@@ -9,7 +9,6 @@ import MyTransfers from "../../components/customer/MyTransfers";
 const MyTransferPage = () => {
   return (
     <>
-      <TopBar />
       <PageHeader
         image="/assets/images/myaccountspage.jpg"
         title="My Transfers"
@@ -24,7 +23,6 @@ const MyTransferPage = () => {
       </Container>
       <Spacer />
       <Spacer />
-      <Footer />
     </>
   );
 };

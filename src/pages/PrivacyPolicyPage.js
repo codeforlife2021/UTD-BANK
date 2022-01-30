@@ -8,11 +8,9 @@ import Policy from "../components/privacyPolicy/Policy";
 const PrivacyPolicyPage = () => {
   return (
     <div>
-      <TopBar />
       <Menu />
       <PageHeader image="/assets/images/terms.png" title="Privacy Policy" />
       <Policy />
-      <Footer />
     </div>
   );
 };

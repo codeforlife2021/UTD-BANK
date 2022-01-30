@@ -9,7 +9,6 @@ import NewAccount from "../../components/customer/NewAccount";
 const NewAccountPage = () => {
   return (
     <>
-      <TopBar />
       <PageHeader
         image="/assets/images/home-facility-bg.png"
         title="New Account"
@@ -24,7 +23,6 @@ const NewAccountPage = () => {
       </Container>
       <Spacer />
       <Spacer />
-      <Footer />
     </>
   );
 };

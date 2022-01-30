@@ -8,7 +8,6 @@ import Spacer from "../../components/common/Spacer";
 const AccountManagementPage = () => {
   return (
     <>
-      <TopBar />
       <PageHeader
         image="/assets/images/carousel-sqare.png"
         title="Account Management"
@@ -18,7 +17,6 @@ const AccountManagementPage = () => {
         <AccountManagement />
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };

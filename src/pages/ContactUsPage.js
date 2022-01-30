@@ -9,12 +9,10 @@ import ContactForm from "../components/contactUs/ContactForm";
 const ContactUsPage = () => {
   return (
     <div>
-      <TopBar />
       <Menu />
       <PageHeader image="/assets/images/contact-us-bg.png" title="Contact Us" />
       <Contact />
       <ContactForm />
-      <Footer />
     </div>
   );
 };

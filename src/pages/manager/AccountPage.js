@@ -9,8 +9,6 @@ import Accounts from "../../components/manager/Accounts";
 const AccountPage = () => {
   return (
     <>
-      {" "}
-      <TopBar />
       <PageHeader title="Accounts" />
       <Container>
         <Row>
@@ -20,7 +18,6 @@ const AccountPage = () => {
         </Row>
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };
