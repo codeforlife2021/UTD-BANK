@@ -26,12 +26,15 @@ const HomeAbout = () => {
                 <div className="home-about-animation">
                   <div className="home-animation-item">
                     <img
-                      src="assets/images/curve-line.png"
+                      src="/assets/images/curve-line.png"
                       alt="animated-icon"
                     />
                   </div>
                   <div className="home-animation-item">
-                    <img src="assets/images/triangle.png" alt="animated-icon" />
+                    <img
+                      src="/assets/images/triangle.png"
+                      alt="animated-icon"
+                    />
                   </div>
                 </div>
               </div>
@@ -40,7 +43,7 @@ const HomeAbout = () => {
               <div className="home-about-item home-about-image pb-30 about-image-ellipsis">
                 <div className="home-image-content">
                   <img
-                    src="assets/images/enterprise.png"
+                    src="/assets/images/enterprise.png"
                     alt="about"
                     className="scale-one-zero-one"
                   />
@@ -56,7 +59,7 @@ const HomeAbout = () => {
               <div className="home-about-item home-about-image pb-30 about-image-shape">
                 <div className="home-image-content">
                   <img
-                    src="assets/images/business.png"
+                    src="/assets/images/business.png"
                     alt="about"
                     className="scale-one-zero-one"
                   />
@@ -103,12 +106,15 @@ const HomeAbout = () => {
                 <div className="home-about-animation">
                   <div className="home-animation-item">
                     <img
-                      src="assets/images/curve-line.png"
+                      src="/assets/images/curve-line.png"
                       alt="animated-icon"
                     />
                   </div>
                   <div className="home-animation-item">
-                    <img src="assets/images/triangle.png" alt="animated-icon" />
+                    <img
+                      src="/assets/images/triangle.png"
+                      alt="animated-icon"
+                    />
                   </div>
                 </div>
               </div>
@@ -117,7 +123,7 @@ const HomeAbout = () => {
               <div className="home-about-item home-about-image about-image-rectangle pb-30">
                 <div className="home-image-content">
                   <img
-                    src="assets/images/entrepreneur.png"
+                    src="/assets/images/entrepreneur.png"
                     alt="about"
                     className="scale-one-zero-one"
                   />

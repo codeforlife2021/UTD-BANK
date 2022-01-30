@@ -10,7 +10,7 @@ const PricingPage = () => {
     <div>
       <TopBar />
       <Menu />
-      <PageHeader image="assets/images/blog.png" title="Pricing" />
+      <PageHeader image="/assets/images/blog.png" title="Pricing" />
       <Pricing />
       <Footer />
     </div>

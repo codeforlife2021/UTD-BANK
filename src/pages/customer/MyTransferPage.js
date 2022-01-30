@@ -11,7 +11,7 @@ const MyTransferPage = () => {
     <>
       <TopBar />
       <PageHeader
-        image="assets/images/myaccountspage.jpg"
+        image="/assets/images/myaccountspage.jpg"
         title="My Transfers"
       />
       <Spacer />

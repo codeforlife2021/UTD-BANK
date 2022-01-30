@@ -15,4 +15,35 @@ const register = () => {
   });
 };
 
-export { login, register };
+const getCustomer = () => {
+  return axios.get(`${API_URL}user`, {
+    headers: authHeader(),
+  });
+};
+
+const getCustomerById = (id) => {
+  return axios.get(`${API_URL}user/${id}/auth`, {
+    headers: authHeader(),
+  });
+};
+
+const updateCustomer = (id, customer) => {
+  return axios.put(`${API_URL}/user/${id}/auth`, customer, {
+    headers: authHeader(),
+  });
+};
+
+const updatePassword = () => {
+  return axios.patch(`${API_URL}user/password`, {
+    headers: authHeader(),
+  });
+};
+
+export {
+  login,
+  register,
+  getCustomer,
+  updateCustomer,
+  updatePassword,
+  getCustomerById,
+};

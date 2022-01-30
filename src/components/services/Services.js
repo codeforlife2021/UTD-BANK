@@ -4,54 +4,65 @@ import ServiceItem from "./ServiceItem";
 
 const Services = () => {
   return (
-    <section class="home-service-section p-tb-100">
-      <div class="container">
+    <section className="home-service-section p-tb-100">
+      <div className="container">
         <SectionTitle
           title="Services we are providing"
-          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod agnamqua ptatem consectetur."
+          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              sed do eiusmod agnamqua ptatem consectetur."
         />
-        <div class="home-service-content service-page-grid">
-          <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
+        <div className="home-service-content service-page-grid">
+          <div className="row">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service1.png"
                 title="Drag and drop functionality"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+                        sed deimod empor inddunt ut ualor sit amet"
+                image="service1.png"
               />
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service2.png"
                 title="Email notifications"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+          sed deimod empor inddunt ut ualor sit amet"
+                image="service2.png"
               />
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service3.png"
                 title="Deadline reminders"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+                        sed deimod empor inddunt ut ualor sit amet"
+                image="service3.png"
               />
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service4.png"
                 title="Simple dashboard"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+                        sed deimod empor inddunt ut ualor sit amet"
+                image="service4.png"
               />
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service5.png"
                 title="Incredible infrastructure"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+                        sed deimod empor inddunt ut ualor sit amet"
+                image="service5.png"
               />
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
+
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <ServiceItem
-                image="assets/images/service1.png"
                 title="Drag and drop functionality"
-                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed deimod empor inddunt ut ualor sit amet"
+                description="Lorem ipsum dolor sit amet, cosectetur adipisicing elit,
+                        sed deimod empor inddunt ut ualor sit amet"
+                image="service1.png"
               />
             </div>
           </div>

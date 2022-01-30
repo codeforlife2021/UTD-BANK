@@ -11,7 +11,7 @@ const ContactUsPage = () => {
     <div>
       <TopBar />
       <Menu />
-      <PageHeader image="assets/images/contact-us-bg.png" title="Contact Us" />
+      <PageHeader image="/assets/images/contact-us-bg.png" title="Contact Us" />
       <Contact />
       <ContactForm />
       <Footer />

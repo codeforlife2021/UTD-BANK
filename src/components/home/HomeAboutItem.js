@@ -1,75 +1,63 @@
-import React from 'react';
-import SectionTitle from './SectionTitle';
+import React from "react";
+import SectionTitle from "./SectionTitle";
 
 const AboutItem = (props) => {
   return (
     <div className="row align-items-center">
-    <div className="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1">
-      <div className="home-about-item desk-pad-right-10 pb-30">
-
-        <SectionTitle title="A fully integrated suite for Large enterprise" description="Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      <div className="col-sm-12 col-md-12 col-lg-6 order-2 order-lg-1">
+        <div className="home-about-item desk-pad-right-10 pb-30">
+          <SectionTitle
+            title="A fully integrated suite for Large enterprise"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                     sed do eiusmod cste et dolore magnam aliquam quaerat
-                    voluptatem." />
-       
-        <div className="home-about-list">
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-           {props.t1}
-          </div>
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-            {props.t2}
-          </div>
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-            {props.t3}
-          </div>
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-            {props.t4}
-          </div>
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-            {props.t5}
-          </div>
-          <div className="home-about-list-item">
-            <img src="assets/images/check.png" alt="checl" />
-            {props.t6}
-          </div>
-        </div>
-        <div className="home-about-animation">
-          <div className="home-animation-item">
-            <img
-              src={props.img1}
-              alt="animated-icon"
-            />
-          </div>
-          <div className="home-animation-item">
-            <img src={props.img2} alt="animated-icon" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div className="col-sm-12 col-md-12 col-lg-6 order-1 order-lg-2">
-      <div
-        className="home-about-item home-about-image pb-30 about-image-ellipsis"
-      >
-        <div className="home-image-content">
-          <img
-            src={props.img3}
-            alt="about"
-            className="scale-one-zero-one"
+                    voluptatem."
           />
+
+          <div className="home-about-list">
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t1}
+            </div>
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t2}
+            </div>
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t3}
+            </div>
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t4}
+            </div>
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t5}
+            </div>
+            <div className="home-about-list-item">
+              <img src="/assets/images/check.png" alt="checl" />
+              {props.t6}
+            </div>
+          </div>
+          <div className="home-about-animation">
+            <div className="home-animation-item">
+              <img src={props.img1} alt="animated-icon" />
+            </div>
+            <div className="home-animation-item">
+              <img src={props.img2} alt="animated-icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-12 col-md-12 col-lg-6 order-1 order-lg-2">
+        <div className="home-about-item home-about-image pb-30 about-image-ellipsis">
+          <div className="home-image-content">
+            <img src={props.img3} alt="about" className="scale-one-zero-one" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  )
+  );
 };
 
 export default AboutItem;
-
-
-    
-
-

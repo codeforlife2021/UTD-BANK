@@ -9,7 +9,7 @@ const AboutUsPage = () => {
   return (
     <>
       <TopBar />
-      <PageHeader image="assets/images/about-page.png" title="aboutUs" />
+      <PageHeader image="/assets/images/about-page.png" title="aboutUs" />
       <About />
       <Retail />
       <Footer />

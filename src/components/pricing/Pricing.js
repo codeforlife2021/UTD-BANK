@@ -10,7 +10,8 @@ const Pricing = () => {
             <div className="pricing-grid-item-inner">
               <div className="pricing-item-header">
                 <h3>
-                  <img src="assets/images/pricing-check.png" alt="icon" /> Basic
+                  <img src="/assets/images/pricing-check.png" alt="icon" />{" "}
+                  Basic
                 </h3>
               </div>
               <div className="pricing-item-amount">
@@ -22,7 +23,7 @@ const Pricing = () => {
                 <ul className="pricing-item-list">
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -33,7 +34,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -41,7 +42,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -49,7 +50,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -60,7 +61,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -68,7 +69,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -76,7 +77,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -87,7 +88,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />
@@ -95,7 +96,7 @@ const Pricing = () => {
                   </li>
                   <li>
                     <img
-                      src="assets/images/pricing-arrow.png"
+                      src="/assets/images/pricing-arrow.png"
                       alt="icon"
                       className="pricing-list-arrow"
                     />

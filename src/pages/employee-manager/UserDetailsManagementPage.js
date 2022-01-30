@@ -5,13 +5,16 @@ import { Container } from "react-bootstrap";
 
 const UserDetailsManagementPage = () => {
   return (
-    <div>
-      <PageHeader title="User Details Management" />
+    <>
+      <PageHeader
+        image="/assets/images/recent-blog-2.png"
+        title="User Details Management"
+      />
 
       <Container>
         <UserDetailsManagement />
       </Container>
-    </div>
+    </>
   );
 };
 

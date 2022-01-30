@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SectionTitle from "./SectionTitle";
 
 const Facility = () => {
@@ -33,11 +34,14 @@ const Facility = () => {
                         dolore magna aliqua. Ut enim ad minim numquam eius modi
                         tempora incidunt ut labore et dolore magnam
                       </p>
-                      <a href="#" className="btn1 blue-gradient btn-with-image">
+                      <Link
+                        to="/authentication"
+                        className="btn1 blue-gradient btn-with-image"
+                      >
                         <i className="flaticon-login"></i>
                         <i className="flaticon-login"></i>
                         Get Started
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

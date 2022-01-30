@@ -15,8 +15,8 @@ const LoginForm = () => {
   const { dispatchUser } = useStore();
   const navigate = useNavigate();
   const initialValues = {
-    ssn: "",
-    password: "",
+    ssn: " 880-08-8686",
+    password: "admin0",
   };
 
   const validationSchema = Yup.object({

@@ -25,7 +25,7 @@ const Pricing = () => {
               <tbody>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Technical support over IRC
                   </td>
                   <td>
@@ -46,7 +46,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Control payout timing
                   </td>
                   <td>
@@ -67,7 +67,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Automate evidence submission
                   </td>
                   <td>
@@ -88,7 +88,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Collaboration notes
                   </td>
                   <td>
@@ -109,7 +109,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Transparent payouts
                   </td>
                   <td>
@@ -130,7 +130,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     24×7 support
                   </td>
                   <td>
@@ -151,7 +151,7 @@ const Pricing = () => {
                 </tr>
                 <tr>
                   <td className="pricing-name blue-gradient">
-                    <img src="assets/images/check-white.png" alt="check" />
+                    <img src="/assets/images/check-white.png" alt="check" />
                     Cognitive Management
                   </td>
                   <td>

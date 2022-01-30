@@ -4,7 +4,6 @@ import Footer from "../../components/common/Footer";
 import PageHeader from "../../components/common/PageHeader";
 import Spacer from "../../components/common/Spacer";
 import TopBar from "../../components/common/TopBar";
-import MyAccount from "../../components/customer/MyAccount";
 import NewAccount from "../../components/customer/NewAccount";
 
 const NewAccountPage = () => {
@@ -12,7 +11,7 @@ const NewAccountPage = () => {
     <>
       <TopBar />
       <PageHeader
-        image="assets/images/myaccountspage.jpg"
+        image="/assets/images/home-facility-bg.png"
         title="New Account"
       />
       <Spacer />
