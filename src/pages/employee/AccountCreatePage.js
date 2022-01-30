@@ -12,14 +12,11 @@ const AccountCreatePage = () => {
 
   return (
     <>
-      {" "}
-      <TopBar />
       <PageHeader title={`Account Management of User Id : ${userId}`} />
       <Container className="mt-5">
         <AccountCreate userId={userId} />
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };

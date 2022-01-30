@@ -9,7 +9,6 @@ import MyAccount from "../../components/customer/MyAccount";
 const MyAccountPage = () => {
   return (
     <>
-      <TopBar />
       <PageHeader image="/assets/images/article-img.png" title="My Account" />
       <Spacer />
       <Container>

@@ -32,11 +32,13 @@ import AccountCreatePage from "../pages/employee/AccountCreatePage";
 import UsersPage from "../pages/manager/UsersPage";
 import UserEditPage from "../pages/manager/UserEditPage";
 import NewTransfer from "../components/customer/NewTransfer";
+import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 
 const CustomRoutes = () => {
   return (
     <Routes>
       {/* EMPLOYEE-MANAGER ROUTES */}
+
       <Route
         path="/account-details-management"
         element={<AccountDetailManagementPage />}

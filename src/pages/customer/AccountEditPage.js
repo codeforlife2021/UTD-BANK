@@ -10,7 +10,6 @@ const AccountEditPage = () => {
   const { accountNo } = useParams();
   return (
     <>
-      <TopBar />
       <PageHeader title="Account Management" />
       <Container className="mt-5">
         <AccountEdit accountNo={accountNo} />

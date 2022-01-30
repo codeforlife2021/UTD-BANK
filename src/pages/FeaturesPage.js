@@ -8,13 +8,11 @@ import Footer from "../components/common/Footer";
 const FeaturesPage = () => {
   return (
     <div>
-      <TopBar />
       <Menu />
       <PageHeader
         image="/assets/images/feature-details-1.png"
         title="Features"
       />
-      <Features />
       <Footer />
     </div>
   );

@@ -1,24 +1,24 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import Users from "../../components/manager/Users";
+import { Container, Row, Col } from "react-bootstrap";
+import Footer from "../../components/common/Footer";
 import PageHeader from "../../components/common/PageHeader";
 import Spacer from "../../components/common/Spacer";
 import TopBar from "../../components/common/TopBar";
-import Footer from "../../components/common/Footer";
+import MyAccount from "../../components/customer/MyAccount";
+import Users from "../../components/manager/Users";
 
-const UsersPage = () => {
+const Userspage = () => {
   return (
     <>
-      <TopBar />
-      <PageHeader image="/assets/images/terms.png" title="User Management" />
+      <PageHeader image="/assets/images/article-img.png" title="My Account" />
       <Spacer />
       <Container>
         <Users />
       </Container>
       <Spacer />
-      <Footer />
+      <Spacer />
     </>
   );
 };
 
-export default UsersPage;
+export default Userspage;

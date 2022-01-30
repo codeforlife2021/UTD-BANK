@@ -9,8 +9,6 @@ import TopBar from "../../components/common/TopBar";
 const AccountsPage = () => {
   return (
     <>
-      {" "}
-      <TopBar />
       <PageHeader title="Accounts" />
       <Container>
         <Row>
@@ -20,7 +18,6 @@ const AccountsPage = () => {
         </Row>
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };

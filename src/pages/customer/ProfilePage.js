@@ -16,7 +16,6 @@ const ProfilePage = () => {
 
   return (
     <>
-      <TopBar />
       <PageHeader image="/assets/images/profile.jpg" title="Profile" />
       <Spacer />
       <Container>
@@ -43,7 +42,6 @@ const ProfilePage = () => {
         </Row>
       </Container>
       <Spacer />
-      <Footer />
     </>
   );
 };

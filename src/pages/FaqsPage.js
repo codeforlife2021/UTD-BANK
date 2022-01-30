@@ -9,12 +9,10 @@ import Faq from "../components/faqs/Faq";
 const FaqsPage = () => {
   return (
     <div>
-      <TopBar />
       <Menu />
       <PageHeader image="/assets/images/blog.png" title="FAQ's" />
       <Faq />
       <ContactForm />
-      <Footer />
     </div>
   );
 };
