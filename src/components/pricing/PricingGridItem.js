@@ -6,7 +6,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
       <div className="pricing-grid-item-inner">
         <div className="pricing-item-header">
           <h3>
-            <img src="assets/images/pricing-check.png" alt="icon" />
+            <img src="/assets/images/pricing-check.png" alt="icon" />
             {title}
           </h3>
         </div>
@@ -21,7 +21,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
           <ul className="pricing-item-list">
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -32,7 +32,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -40,7 +40,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -48,7 +48,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -59,7 +59,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -67,7 +67,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -75,7 +75,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -86,7 +86,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />
@@ -94,7 +94,7 @@ const PricingGridItem = ({ title, number, t2, t3, t4 }) => {
             </li>
             <li>
               <img
-                src="assets/images/pricing-arrow.png"
+                src="/assets/images/pricing-arrow.png"
                 alt="icon"
                 className="pricing-list-arrow"
               />

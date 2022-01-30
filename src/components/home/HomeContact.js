@@ -7,18 +7,18 @@ const HomeContact = () => {
         <div className="home-quick-contact blue-gradient">
           <div className="logo-bg-icon">
             <div className="logo-bg-item">
-              <img src="assets/images/circle.png" alt="icon" />
+              <img src="/assets/images/circle.png" alt="icon" />
             </div>
             <div className="logo-bg-item">
-              <img src="assets/images/square.png" alt="icon" />
+              <img src="/assets/images/square.png" alt="icon" />
             </div>
           </div>
           <div className="quick-contact-inner">
             <h2>
-              What’s thinking? <br />
-              don’t worry! get connected us
+              What's thinking? <br />
+              don't worry! get connected us
             </h2>
-            <p>*We’re willingly is here to answer your question about Aila</p>
+            <p>*We're willingly is here to answer your question about Aila</p>
             <ul className="section-button">
               <li>
                 <a

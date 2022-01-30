@@ -9,7 +9,7 @@ const ServicesPage = () => {
     <div>
       <TopBar />
       <Menu />
-      <PageHeader image="assets/images/terms.png" title="Services" />
+      <PageHeader image="/assets/images/terms.png" title="Services" />
       <Services />
       <Footer />
     </div>

@@ -10,14 +10,10 @@ const MyAccountPage = () => {
   return (
     <>
       <TopBar />
-      <PageHeader image="assets/images/myaccountspage.jpg" title="My Account" />
+      <PageHeader image="/assets/images/article-img.png" title="My Account" />
       <Spacer />
       <Container>
-        <Row>
-          <Col>
-            <MyAccount />
-          </Col>
-        </Row>
+        <MyAccount />
       </Container>
       <Spacer />
       <Spacer />

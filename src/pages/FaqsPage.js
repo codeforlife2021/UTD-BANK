@@ -11,7 +11,7 @@ const FaqsPage = () => {
     <div>
       <TopBar />
       <Menu />
-      <PageHeader image="assets/images/blog.png" title="FAQ's" />
+      <PageHeader image="/assets/images/blog.png" title="FAQ's" />
       <Faq />
       <ContactForm />
       <Footer />

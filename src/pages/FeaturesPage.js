@@ -11,7 +11,7 @@ const FeaturesPage = () => {
       <TopBar />
       <Menu />
       <PageHeader
-        image="assets/images/feature-details-1.png"
+        image="/assets/images/feature-details-1.png"
         title="Features"
       />
       <Features />

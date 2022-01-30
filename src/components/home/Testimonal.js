@@ -7,13 +7,13 @@ const Testimonal = ({ image, title, d1, d2 }) => {
           <div className="client-carousel-thumb">
             <div className="client-carousel-icon">
               <div className="carousel-icon-item">
-                <img src="assets/images/carousel-sqare.png" alt="icon" />
+                <img src="/assets/images/carousel-sqare.png" alt="icon" />
               </div>
               <div className="carousel-icon-item">
-                <img src="assets/images/carousel-curve.png" alt="icon" />
+                <img src="/assets/images/carousel-curve.png" alt="icon" />
               </div>
               <div className="carousel-icon-item">
-                <img src="assets/images/carousel-round.png" alt="icon" />
+                <img src="/assets/images/carousel-round.png" alt="icon" />
               </div>
             </div>
             <div className="client-carousel-img">

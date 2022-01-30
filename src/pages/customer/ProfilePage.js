@@ -17,7 +17,7 @@ const ProfilePage = () => {
   return (
     <>
       <TopBar />
-      <PageHeader image="assets/images/profile.jpg" title="Profile" />
+      <PageHeader image="/assets/images/profile.jpg" title="Profile" />
       <Spacer />
       <Container>
         <Row>

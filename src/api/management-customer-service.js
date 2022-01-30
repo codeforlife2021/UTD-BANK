@@ -14,8 +14,8 @@ const getCustomer = (customerId) => {
     headers: authHeader(),
   });
 };
-const updateCustomer = (customerId) => {
-  return axios.put(`${API_URL}user/${customerId}/auth`, {
+const updateCustomer = (customerId, customer) => {
+  return axios.put(`${API_URL}user/${customerId}/auth`, customer, {
     headers: authHeader(),
   });
 };
@@ -25,4 +25,21 @@ const deleteCustomer = (customerId) => {
     headers: authHeader(),
   });
 };
-export { getCustomers, getCustomer, updateCustomer, deleteCustomer };
+
+const searchCustomers = (customerSsn) => {
+  return axios.get(
+    `${API_URL}user/auth/search?ssn=${customerSsn}`,
+
+    {
+      headers: authHeader(),
+    }
+  );
+};
+
+export {
+  getCustomers,
+  getCustomer,
+  searchCustomers,
+  updateCustomer,
+  deleteCustomer,
+};

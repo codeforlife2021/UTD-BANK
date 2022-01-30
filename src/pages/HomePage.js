@@ -17,8 +17,9 @@ const HomePage = () => {
   return (
     <>
       <TopBar />
-      <Menu />
       <Banner />
+      <Menu />
+
       <BannerContact />
       <Features />
       <HomeAbout />

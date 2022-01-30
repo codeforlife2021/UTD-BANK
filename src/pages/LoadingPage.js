@@ -5,7 +5,7 @@ const LoadingPage = () => {
   return (
     <div className="spinner-loading">
       <Spinner animation="border" variant="primary" />
-      <Image src="assets/images/logo.png" className="logo" />
+      <Image src="/assets/images/logo.png" className="logo" />
     </div>
   );
 };

@@ -10,7 +10,7 @@ const PrivacyPolicyPage = () => {
     <div>
       <TopBar />
       <Menu />
-      <PageHeader image="assets/images/terms.png" title="Privacy Policy" />
+      <PageHeader image="/assets/images/terms.png" title="Privacy Policy" />
       <Policy />
       <Footer />
     </div>

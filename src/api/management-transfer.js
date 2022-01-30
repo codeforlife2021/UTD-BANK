@@ -15,4 +15,21 @@ const getTransfersByCustomerId = (customerId) => {
   });
 };
 
-export { getTransfers, getTransfersByCustomerId };
+const getTransferByAccountId = (accountId) => {
+  return axios.get(`${API_URL}transfer/${accountId}/auth`, {
+    headers: authHeader(),
+  });
+};
+
+const getTransfersByAccountNo = (accountNo) => {
+  return axios.get(`${API_URL}transfer/${accountNo}/accountNo/auth`, {
+    headers: authHeader(),
+  });
+};
+
+export {
+  getTransfers,
+  getTransfersByCustomerId,
+  getTransferByAccountId,
+  getTransfersByAccountNo,
+};
