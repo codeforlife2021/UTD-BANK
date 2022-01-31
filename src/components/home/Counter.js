@@ -4,6 +4,7 @@ import SectionTitle from "./SectionTitle";
 
 const Counter = () => {
   return (
+    <>
     <section className="counter-section pt-100 pb-70">
       <div className="container">
         <SectionTitle title="We always try to evaluate customers Values" />
@@ -17,14 +18,15 @@ const Counter = () => {
             <p>Feedback</p>
           </div>
 
-          <CounterItem number="40" sign="K" title="Feedback" />
+          <CounterItem number="40" sign="K" title1="Feedback" />
 
-          <CounterItem number="1000" sign="k" title="Downloaded" />
+          <CounterItem number="1000" sign="k" title1="Downloaded" />
 
-          <CounterItem number="590" sign="+" title="Workers" />
+          <CounterItem number="590" sign="+" title1="Workers" />
         </div>
       </div>
     </section>
+    </>
   );
 };
 

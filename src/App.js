@@ -33,8 +33,7 @@ function App() {
     loadData();
   }, []);
 
-  if (loading) return <LoadingPage />;
-  else
+  
     return (
       <BrowserRouter>
         <TopBar />
