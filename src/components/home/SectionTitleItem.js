@@ -1,7 +1,7 @@
 import React from "react";
 
 const SectionTitleItem = (props) => {
-  return (
+  return (<>
     <div className="item">
       <div className="feature-carousel-content">
         <div className={props.renk}>
@@ -13,6 +13,7 @@ const SectionTitleItem = (props) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
