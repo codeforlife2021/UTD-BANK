@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import Users from "../../components/manager/Users";
 import PageHeader from "../../components/common/PageHeader";
 import Spacer from "../../components/common/Spacer";
+import Footer from "./../../components/common/Footer";
 
 const UsersPage = () => {
   return (
@@ -13,6 +14,7 @@ const UsersPage = () => {
         <Users />
       </Container>
       <Spacer />
+      <Footer />
     </>
   );
 };

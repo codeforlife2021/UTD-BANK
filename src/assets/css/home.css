@@ -1,0 +1,76 @@
+.slider {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #898989;
+  mix-blend-mode: overlay;
+}
+
+.text {
+  position: absolute;
+  z-index: 999;
+  top: 250px;
+  left: 50px;
+}
+
+.text h2 {
+  font-size: 3em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text h3 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text p {
+  font-size: 1.1em;
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 400;
+  max-width: 700px;
+}
+.text a {
+  display: inline-block;
+  font-size: 1em;
+  background: #fff;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #fff;
+  letter-spacing: 2px;
+  transition: 0.2s;
+  background-color: #e63719;
+}
+.text a:hover {
+  letter-spacing: 6px;
+}
+@media (max-width: 991px) {
+  .text h2 {
+    font-size: 2em;
+  }
+  .text h3 {
+    font-size: 1em;
+  }
+}

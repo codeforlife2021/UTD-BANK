@@ -3,18 +3,12 @@ import { Link } from "react-router-dom";
 import Menu from "./Menu";
 
 import UserMenu from "./UserMenu";
+import Navbar from "./Navbar";
 const TopBar = () => {
   return (
     <div className="fixed-top">
       <div className="navbar-area">
-        <div className="mobile-nav">
-          <Link to="/" className="logo">
-            <img src="assets/images/logo.png" alt="logo" />
-          </Link>
-          <UserMenu />
-        </div>
-
-        <Menu />
+        <Navbar />
       </div>
     </div>
   );

@@ -1156,6 +1156,7 @@ button:active {
   pointer-events: none;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  textdecoration: none;
 }
 .navbar-option-item .dropdown-menu.show {
   -webkit-transform: translateY(0);
@@ -1246,7 +1247,7 @@ button:active {
   margin-left: 0;
 }
 .header-bg {
-  background-image: url(../images/header-bg.png);
+  background-image: url(../videos/bank.mp4);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1405,7 +1406,7 @@ button:active {
   width: 100%;
 }
 .support-logo {
-  max-width: 145px;
+  max-width: 100px;
 }
 .support-logo img {
   width: 100%;
@@ -2325,7 +2326,7 @@ button:active {
 }
 .logo-bg-item:nth-child(1) {
   top: 50%;
-  width: 150px;
+  width: 100px;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   left: 70px;

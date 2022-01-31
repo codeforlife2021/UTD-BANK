@@ -39,7 +39,7 @@ function App() {
       <BrowserRouter>
         <TopBar />
         <CustomRoutes />
-        <Footer />
+
         <ToastContainer />
       </BrowserRouter>
     );

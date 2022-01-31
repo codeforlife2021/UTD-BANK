@@ -11,6 +11,7 @@ const AboutUsPage = () => {
       <PageHeader image="/assets/images/about-page.png" title="aboutUs" />
       <About />
       <Retail />
+      <Footer />
     </>
   );
 };
