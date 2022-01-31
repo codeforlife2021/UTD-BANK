@@ -17,6 +17,7 @@ const AccountCreatePage = () => {
         <AccountCreate userId={userId} />
       </Container>
       <Spacer />
+      <Footer />
     </>
   );
 };

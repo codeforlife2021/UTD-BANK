@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useStore } from "../../store";
 import { logout } from "../../store/user/userActions";
 import UserMenu from "./UserMenu";
+import Navbar from "./Navbar";
 const Menu = () => {
   const { userState, dispatchUser } = useStore();
   const { user, isUserLogin } = userState;
@@ -24,7 +25,8 @@ const Menu = () => {
             className="collapse navbar-collapse mean-menu"
             id="navbarSupportedContent"
           >
-            <ul className="navbar-nav mx-auto">
+            <Navbar />
+            {/* <ul className="navbar-nav mx-auto">
               <li className="nav-item">
                 <Link to="/" className="nav-link active">
                   Home
@@ -50,7 +52,7 @@ const Menu = () => {
                   Contact Us
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <UserMenu />

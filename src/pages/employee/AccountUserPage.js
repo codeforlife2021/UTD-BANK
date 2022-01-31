@@ -16,6 +16,7 @@ const AccountUserPage = () => {
         <AccountsUser userId={userId} />
       </Container>
       <Spacer />
+      <Footer />
     </>
   );
 };

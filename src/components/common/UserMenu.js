@@ -25,72 +25,19 @@ const UserMenu = () => {
     );
   };
   return (
-    <div className="navbar-option">
+    <div
+      className="navbar-option"
+      style={{ position: "absolute", right: "20px" }}
+    >
       <div className="navbar-option-item">
         {isUserLogin ? (
           <DropdownButton
             id="dropdown-basic-button"
-            title={`Welcome ${user.firstName} ${user.lastName}`}
-            size="sm"
+            title={` ${user.firstName} ${user.lastName}`}
             align="end"
           >
-            {isManager(user.roles) && (
-              <>
-                <Dropdown.Item as={Link} to="/account-details-management">
-                  Account Details Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/account-management">
-                  Account Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/manager/users/:userId">
-                  User Details Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/manager/users">
-                  User Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-              </>
-            )}
-
-            {isEmployee(user.roles) && (
-              <>
-                <Dropdown.Item as={Link} to="/account-details-management">
-                  Account Details Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/account-management">
-                  Account Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/user-details-management">
-                  User Details Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-
-                <Dropdown.Item as={Link} to="/user-management">
-                  User Management
-                </Dropdown.Item>
-                <Dropdown.Divider />
-              </>
-            )}
-
             <Dropdown.Item as={Link} to="/profile">
               Profile
-            </Dropdown.Item>
-            <Dropdown.Item as={Link} to="/my-account">
-              My-Account
-            </Dropdown.Item>
-
-            <Dropdown.Item as={Link} to="/my-transfers">
-              My-Transfers
             </Dropdown.Item>
 
             <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>

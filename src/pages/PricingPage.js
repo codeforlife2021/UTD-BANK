@@ -8,9 +8,10 @@ import Menu from "../components/common/Menu";
 const PricingPage = () => {
   return (
     <div>
-      <Menu />
+      <TopBar />
       <PageHeader image="/assets/images/blog.png" title="Pricing" />
       <Pricing />
+      <Footer />
     </div>
   );
 };

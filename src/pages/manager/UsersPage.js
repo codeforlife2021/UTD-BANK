@@ -16,7 +16,8 @@ const Userspage = () => {
         <Users />
       </Container>
       <Spacer />
-      <Spacer />
+
+      <Footer />
     </>
   );
 };

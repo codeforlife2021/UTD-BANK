@@ -18,6 +18,7 @@ const AccountsPage = () => {
         </Row>
       </Container>
       <Spacer />
+      <Footer />
     </>
   );
 };

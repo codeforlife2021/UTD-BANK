@@ -16,6 +16,7 @@ const AccountEditPage = () => {
         <AccountEdit accountNo={accountNo} />
       </Container>
       <Spacer />
+      <Footer />
     </>
   );
 };
