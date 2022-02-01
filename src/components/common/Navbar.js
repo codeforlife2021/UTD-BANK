@@ -19,25 +19,10 @@ import * as IoIcons from "react-icons/io";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
   const { userState, dispatchUser } = useStore();
   const { user, isUserLogin } = userState;
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    alertify.confirm(
-      "Logout",
-      "Are you sure you want to logout?",
-      () => {
-        dispatchUser(logout());
-        localStorage.removeItem("token");
-        navigate("/");
-      },
-      () => {
-        console.log("canceled");
-      }
-    );
-  };
+
   return (
     <>
       <div className="navbar">
@@ -94,6 +79,12 @@ function Navbar() {
               <>
                 {" "}
                 <div className="divider"></div>
+                <li className="nav-text">
+                  <Link to="/my-dashboard">
+                    <FaIcons.FaRegMoneyBillAlt />
+                    <span>UTDBANK</span>
+                  </Link>
+                </li>
                 <li className="nav-text">
                   <Link to="/my-account">
                     <FaIcons.FaRegMoneyBillAlt />
