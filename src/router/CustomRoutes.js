@@ -33,6 +33,7 @@ import UsersPage from "../pages/manager/UsersPage";
 import UserEditPage from "../pages/manager/UserEditPage";
 import NewTransfer from "../components/customer/NewTransfer";
 import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
+import DashboardPage from "../pages/customer/DashboardPage";
 
 const CustomRoutes = () => {
   return (
@@ -129,6 +130,14 @@ const CustomRoutes = () => {
         element={
           <PrivateRoute>
             <MyTransferPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/my-dashboard"
+        element={
+          <PrivateRoute>
+            <DashboardPage />
           </PrivateRoute>
         }
       />

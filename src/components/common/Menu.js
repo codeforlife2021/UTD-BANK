@@ -26,33 +26,6 @@ const Menu = () => {
             id="navbarSupportedContent"
           >
             <Navbar />
-            {/* <ul className="navbar-nav mx-auto">
-              <li className="nav-item">
-                <Link to="/" className="nav-link active">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/about-us" className="nav-link">
-                  About Us
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/services" className="nav-link">
-                  Services
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/pricing" className="nav-link">
-                  Pricing
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/contact-us" className="nav-link">
-                  Contact Us
-                </Link>
-              </li>
-            </ul> */}
           </div>
 
           <UserMenu />
