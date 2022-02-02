@@ -3,17 +3,8 @@
   --color1: #e63719;
   --color2: #e5391c;
   --color3: #233765;
-  --color4: #e7e7e7;
-  --color5: #ff4500;
-  --color6: #e5391c;
-  --color7: #54220b;
-  --color8: #dc3545;
-  --color9: #ffcc99;
-  --color10: #ff8c00;
-  --color11: #fadfad;
-  --color12: #c04000;
-  --color13: #ff7518;
-  --color14: #cd5700;
+  --color4: #ff4500;
+  --color5: #c04000;
   --color1-transparent-15: rgb(251, 206, 177);
 }
 body {
@@ -23,38 +14,27 @@ body {
 }
 
 .btn-primary {
+  color: #fff;
   background-color: var(--color1);
   border-color: var(--color1);
 }
 
 .btn-primary:hover {
-  background-color: var(--color2);
-  border-color: var(--color2);
-}
-
-.btn-check:focus + .btn-primary,
-.btn-primary:focus {
+  color: #fff;
   background-color: var(--color1);
-  border-color: var(--color2);
+  border-color: var(--color1);
 }
 
 .btn-danger {
   color: #fff;
-  background-color: var(--color7);
+  background-color: var(--color1);
+  font-size: 18px;
   border-color: var(--color1);
   background: var(--color1);
 }
 
 .btn-danger:hover {
   color: #fff;
-  background-color: var(--color7);
-  border-color: var(--color1);
-  background: var(--color1);
-}
-
-.btn-secondary {
-  color: #fff;
-  background: var(--color1);
   background-color: var(--color1);
   border-color: var(--color1);
 }
@@ -67,19 +47,26 @@ body {
   color: #fff;
   background-color: var(--color1);
   border-color: var(--color1);
-  background: var(--color1);
+}
+
+.btn-danger.disabled,
+.btn-danger:disabled {
+  color: #fff;
+  background-color: var(--color1);
 }
 
 .btn-secondary {
   color: #fff;
   background-color: var(--color1);
-  border-color: var(--color2);
+  border-color: var(--color1);
 }
+
 a {
+  color: var(--color1);
   text-decoration: none;
 }
-.blue-gradient {
-  background: var(--color1);
+a:hover {
+  color: var(--color1);
 }
 
 .spinner-loading {
@@ -108,7 +95,7 @@ a {
 }
 
 .counter-span {
-  background: var(--color12);
+  background: var(--color5);
 }
 /****SEARCH CUSTOMER****/
 .search-customer {
@@ -120,8 +107,8 @@ a {
   top: 2.5rem;
   left: 0;
   right: 0;
-  background-color: #ffffffe5;
-  border: 1px solid var(--color7);
+  background-color: white;
+  border: 1px solid white;
   border-radius: 0.3rem;
   z-index: 5;
   margin: 0;
@@ -246,7 +233,7 @@ a {
 /************ ADMIN ************/
 
 .image-area {
-  background-color: var(--color3);
+  background-color: var(--color1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,53 +264,173 @@ a {
 /************ FOOTER ************/
 
 footer {
-  background-color: var(--color5);
+  background-color: var(--color4);
   padding: 2rem;
   text-align: center;
 }
 .ajs-header {
   background-color: var(--color1) !important;
-  color: var(--color4) !important;
+  color: white !important;
 }
 
 .ajs-close {
-  color: var(--color4);
+  color: white;
 }
 .ajs-ok {
   background-color: var(--color1) !important;
-  color: var(--color4) !important;
+  color: white !important;
 }
 .counter-item h3 {
-  -webkit-text-fill-color: var(--color3); /* --color3:#233665; */
+  -webkit-text-fill-color: var(--color3);
 }
 .counter-item p {
   color: var(--color3);
 }
 .btn1.blue-gradient {
-  background: #e63719;
+  background: var(--color1);
 }
 .blue-gradient {
   background: var(--color3);
 }
 .home-service-start h2 {
-  color: #e5391c;
+  color: var(--color2);
 }
 .home-service-text h3,
 .home-service-text-2 h3 {
-  color: #e5391c;
+  color: var(--color2);
 }
 .pricing-item-amount h4 {
-  color: #e5391c;
+  color: var(--color2);
 }
 .pricing-item-amount {
   background-color: rgba(255, 144, 41, 0.2);
 }
 .pricing-item-amount:before {
-  background: #f4772f;
+  background: var(--color1);
 }
 
 .alertify .ajs-commands button.ajs-close {
   background-color: white;
+}
+
+.section-button li .btn1 {
+  font-weight: 400;
+  color: var(--color1);
+}
+
+.availability-blue {
+  background: var(--color1);
+  color: #fff;
+}
+
+.availability-green {
+  background: var(--color1);
+  color: #fff;
+}
+
+.pricing-item-header h3 {
+  color: var(--color3);
+}
+
+.blue-gradient:hover {
+  background: var(--color3);
+  border-color: white;
+}
+
+.btn-check:hover + .btn-primary:hover {
+  background-color: var(--color1);
+  border-color: var(--color1);
+  border: none;
+}
+
+.btn-primary.dropdown-toggle:hover {
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+
+.btn-secondary :hover {
+  color: #fff;
+  border-color: var(--color1);
+  background-color: var(--color1);
+}
+
+.btn-danger.disabled,
+.btn-danger:disabled {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-check:active + .btn-outline-danger,
+.btn-check:checked + .btn-outline-danger,
+.btn-outline-danger.active,
+.btn-outline-danger.dropdown-toggle.show,
+.btn-outline-danger:active {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-outline-danger.disabled,
+.btn-outline-danger:disabled {
+  color: var(--color1);
+  background-color: transparent;
+}
+.bg-danger {
+  background-color: var(--color1) !important;
+}
+.btn-secondary.disabled,
+.btn-secondary:disabled {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-outline-secondary {
+  color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-outline-secondary:hover {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-check:active + .btn-outline-secondary,
+.btn-check:checked + .btn-outline-secondary,
+.btn-outline-secondary.active,
+.btn-outline-secondary.dropdown-toggle.show,
+.btn-outline-secondary:active {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  color: #fff;
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+.btn-outline-secondary.disabled,
+.btn-outline-secondary:disabled {
+  color: --color1;
+  background-color: transparent;
+}
+
+button.btn.btn-secondary {
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+button.btn.btn-danger {
+  background-color: var(--color1);
+  border-color: var(--color1);
+}
+
+.btn-group-sm > .btn,
+.btn-sm {
+  padding: 0.2rem;
+  border-radius: 2.5rem;
+  font-size: 0.9rem;
+}
+.btn {
+  padding: 0.375rem 0.75rem;
 }
 
 .field__input {
