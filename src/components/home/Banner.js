@@ -7,7 +7,7 @@ const Banner = () => {
       <video
         className="video"
         src="../../assets/videos/bank.mp4"
-        autoPlay={true}
+        autoplay="true"
         muted
         loop="true"
       ></video>

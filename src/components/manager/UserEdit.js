@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import MaskInput from "react-maskinput";
 import {
   Form,
   Button,
@@ -13,39 +12,45 @@ import {
   Alert,
 } from "react-bootstrap";
 import {
-  deleteCustomer,
-  getCustomer,
-  updateCustomer,
+  deleteUserById,
+  getUserById,
+  updateUserById,
 } from "../../api/management-customer-service";
+import MaskInput from "react-maskinput/lib";
 import alertify from "alertifyjs";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { getCustomerById } from "../../api/customer-service";
+import { useNavigate, useParams } from "react-router-dom";
 
-const UserDetailsManagement = () => {
+const UserEdit = () => {
   const [initialValues, setInitialValues] = useState({
+    id: 0,
+    ssn: "",
     firstName: "",
     lastName: "",
     mobilePhoneNumber: "",
     email: "",
     address: "",
-    zipCode: "",
-    username: "",
-
-    roles: "",
-    builtIn: false,
+    password: null,
+    modInfId: {},
+    roles: ["Customer"],
+    buildIn: false,
   });
 
   const [saving, setSaving] = useState(false);
-  const [user, setUser] = useState({});
   const [deleting, setDeleting] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { customerId } = useParams();
+  const { userId } = useParams();
   const navigate = useNavigate();
 
   const validationSchema = Yup.object({
+    ssn: Yup.string().required("Please enter your SSN"),
     firstName: Yup.string().required("Please enter your first name"),
     lastName: Yup.string().required("Please enter your last name"),
-    mobilePhoneNumber: Yup.string().required("Please enter your phone number"),
+    mobilePhoneNumber: Yup.string()
+      .required("Please enter your phone number")
+      .test(
+        "includes_",
+        "Please enter a valid phone number",
+        (value) => value && !value.includes("_")
+      ),
     email: Yup.string().email().required("Please enter your email"),
     address: Yup.string().required("Please enter your address"),
     roles: Yup.array().required("Please select a role"),
@@ -53,12 +58,11 @@ const UserDetailsManagement = () => {
 
   const onSubmit = (values) => {
     setSaving(true);
-
-    updateCustomer(customerId, values)
+    console.log(values);
+    updateUserById(userId, values)
       .then((resp) => {
         setSaving(false);
-        toast("Customer was updated successfully");
-        navigate(-1);
+        toast("User was updated successfully");
       })
       .catch((err) => {
         toast("An error occured. Please try again later.");
@@ -75,15 +79,17 @@ const UserDetailsManagement = () => {
   });
 
   const handleDelete = () => {
+    //userId nin boş olmadığı veya numeric olduğu kontrol edilse iyi olur.
+
     alertify.confirm(
       "Delete",
       "Are you sure want to delete?",
       () => {
         setDeleting(true);
-        deleteCustomer(customerId)
+        deleteUserById(userId)
           .then((resp) => {
             setDeleting(false);
-            toast("Customer was deleted uccessfully");
+            toast("User was deleted uccessfully");
             navigate(-1);
           })
           .catch((err) => {
@@ -99,12 +105,11 @@ const UserDetailsManagement = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    //userId nin boş olmadığı veya numeric olduğu kontrol edilse iyi olur.
 
-    getCustomer(customerId).then((resp) => {
-      setInitialValues(resp.data);
+    getUserById(userId).then((resp) => {
       console.log(resp.data);
-      setLoading(false);
+      setInitialValues(resp.data);
     });
   }, []);
 
@@ -112,14 +117,27 @@ const UserDetailsManagement = () => {
     <Form noValidate onSubmit={formik.handleSubmit}>
       <Row>
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
-          <Form.Label>First Name </Form.Label>
+          <Form.Label>SSN</Form.Label>
           <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
+            type="text"
+            placeholder="Enter ssn"
+            value={formik.values.ssn}
+            disabled
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} md={4} lg={3} className="mb-3">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
             type="text"
             placeholder="Enter first name"
             {...formik.getFieldProps("firstName")}
             isInvalid={!!formik.errors.firstName}
           />
-
           <Form.Control.Feedback type="invalid">
             {formik.errors.firstName}
           </Form.Control.Feedback>
@@ -128,6 +146,8 @@ const UserDetailsManagement = () => {
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
             type="text"
             placeholder="Enter last name"
             {...formik.getFieldProps("lastName")}
@@ -141,6 +161,8 @@ const UserDetailsManagement = () => {
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
             type="text"
             placeholder="Enter phone number"
             as={MaskInput}
@@ -158,16 +180,23 @@ const UserDetailsManagement = () => {
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
           <Form.Label>Email</Form.Label>
           <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
             type="email"
             placeholder="Enter email"
             {...formik.getFieldProps("email")}
-            isInvalid={!!formik.errors.firstName}
+            isInvalid={!!formik.errors.email}
           />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.email}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
           <Form.Label>Address</Form.Label>
           <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
             type="text"
             placeholder="Enter address"
             {...formik.getFieldProps("address")}
@@ -177,6 +206,22 @@ const UserDetailsManagement = () => {
             {formik.errors.address}
           </Form.Control.Feedback>
         </Form.Group>
+
+        <Form.Group as={Col} md={4} lg={3} className="mb-3">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            className="p-2"
+            style={{ border: "0.25px solid" }}
+            type="text"
+            placeholder="Enter password"
+            {...formik.getFieldProps("password")}
+            isInvalid={!!formik.errors.password}
+          />
+          <Form.Control.Feedback type="invalid">
+            {formik.errors.password}
+          </Form.Control.Feedback>
+        </Form.Group>
+
         <Form.Group as={Col} md={4} lg={3} className="mb-3">
           <Form.Label>Roles</Form.Label>
 
@@ -217,7 +262,7 @@ const UserDetailsManagement = () => {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      {initialValues.builtIn && (
+      {initialValues.buildIn && (
         <Alert variant="danger">
           Built-in accounts can not be deleted and updated
         </Alert>
@@ -232,15 +277,13 @@ const UserDetailsManagement = () => {
           >
             Cancel
           </Button>
-          {!initialValues.builtIn && (
+          {!initialValues.buildIn && (
             <>
-              <Button
-                variant="primary"
-                type="submit"
-                to="/manager/users"
-                size="sm"
-              >
-                Update
+              <Button variant="primary" type="submit" disabled={saving}>
+                {saving && (
+                  <Spinner animation="border" variant="light" size="sm" />
+                )}{" "}
+                Save
               </Button>
               <Button
                 type="button"
@@ -260,5 +303,4 @@ const UserDetailsManagement = () => {
     </Form>
   );
 };
-
-export default UserDetailsManagement;
+export default UserEdit;

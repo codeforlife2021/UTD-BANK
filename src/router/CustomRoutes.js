@@ -35,6 +35,12 @@ import NewTransfer from "../components/customer/NewTransfer";
 import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 import DashboardPage from "../pages/customer/DashboardPage";
 
+import TransferDetailsPageE from "../pages/employee/TransferDetailsPageE";
+import TransfersByUserIdPageE from "../pages/employee/TransfersByUserIdPageE";
+
+import TransferDetailsPageM from "../pages/manager/TransferDetailsPageM";
+import TransfersByUserIdPageM from "../pages/manager/TransfersByUserIdPageM";
+
 const CustomRoutes = () => {
   return (
     <Routes>
@@ -52,6 +58,33 @@ const CustomRoutes = () => {
       <Route path="/user-management" element={<UserManagementPage />} />
 
       {/* MANAGER */}
+
+      <Route
+        path="/transfer/:id/manager"
+        element={
+          <PrivateRoute manager={true}>
+            <TransferDetailsPageM />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/transfer/user/:userId/manager"
+        element={
+          <PrivateRoute manager={true}>
+            <TransfersByUserIdPageM />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/manager/user/:userId"
+        element={
+          <PrivateRoute manager={true}>
+            <UserEditPage />
+          </PrivateRoute>
+        }
+      />
 
       <Route
         path="/manager/users"
@@ -89,6 +122,24 @@ const CustomRoutes = () => {
       />
 
       {/* EMPLOYEE */}
+
+      <Route
+        path="/transfer/:id/employee"
+        element={
+          <PrivateRoute employee={true}>
+            <TransferDetailsPageE />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/transfer/user/:userId/employee"
+        element={
+          <PrivateRoute employee={true}>
+            <TransfersByUserIdPageE />
+          </PrivateRoute>
+        }
+      />
 
       <Route
         path="/account/:accountNo/employee"
