@@ -27,9 +27,30 @@ const getTransfersByAccountNo = (accountNo) => {
   });
 };
 
+const getAllTransfers = () => {
+  return axios.get(`${API_URL}transfer/auth/all`, {
+    headers: authHeader(),
+  });
+};
+
+const getTransfersByUserId = (userId) => {
+  return axios.get(`${API_URL}transfer/user/${userId}/auth`, {
+    headers: authHeader(),
+  });
+};
+
+const getTransferByTransferId = (id) => {
+  return axios.get(`${API_URL}transfer/${id}/auth`, {
+    headers: authHeader(),
+  });
+};
+
 export {
   getTransfers,
   getTransfersByCustomerId,
   getTransferByAccountId,
   getTransfersByAccountNo,
+  getAllTransfers,
+  getTransfersByUserId,
+  getTransferByTransferId,
 };

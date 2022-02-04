@@ -2,144 +2,215 @@ import React, { useState, useEffect } from "react";
 import {
   Table,
   Button,
-  ButtonGroup,
   Spinner,
+  Row,
   Form,
   Col,
   Container,
-  Row,
+  Card,
 } from "react-bootstrap";
+import MaskInput from "react-maskinput/lib";
 import { Link, useNavigate } from "react-router-dom";
 import {
   getCustomers,
   searchCustomers,
 } from "../../api/management-customer-service";
-import { toast } from "react-toastify";
-import { useFormik } from "formik";
-import { FiSearch } from "react-icons/fi";
-import * as Yup from "yup";
-import MaskInput from "react-maskinput/lib";
+import Spacer from "../../components/common/Spacer";
+
 const Users = () => {
-  const [loadingUsers, setLoadingUsers] = useState(true);
-  const [downloadingUsers, setDownloadingUsers] = useState(false);
+  const [loadingUsers, setLoadingUsers] = useState(false);
   const [users, setUsers] = useState([]);
+
+  const [searchSSN, setSearchSSN] = useState("");
+  const [searchFirstName, setSearchFirstName] = useState("");
+  const [searchLastName, setSearchLastName] = useState("");
+  const [searchEmail, setSearchEmail] = useState("");
+
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log("handle submit ici: ");
 
-  const initialValues = {
-    ssn: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-  };
+    console.log(
+      searchSSN +
+        "-" +
+        searchFirstName +
+        "-" +
+        searchLastName +
+        "-" +
+        searchEmail
+    );
 
-  const validationSchema = Yup.object({
-    firstName: Yup.string().required("Please enter your first name"),
-    ssn: Yup.string().required("Please enter your SSN"),
-    lastName: Yup.string().required("Please enter your last name"),
-    email: Yup.string().email().required("Please Enter your email"),
-  });
-
-  const onSubmit = (values, paramater) => {
-    console.log(values);
-
-    setLoading(true);
-
-    searchCustomers(values)
+    searchCustomers(searchSSN, searchFirstName, searchLastName, searchEmail)
       .then((resp) => {
-        setLoading(false);
-        toast("You are registered successfully. ");
-        navigate("/");
+        console.log(resp.data);
+        setUsers(resp.data);
+        setSearchSSN("");
+        setSearchFirstName("");
+        setSearchLastName("");
+        setSearchEmail("");
       })
       .catch((err) => {
-        console.log("Registration failed");
-        setLoading(false);
-        toast(err.response.data.message);
+        console.log("search hatasi " + err.message);
       });
   };
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit,
-  });
-
-  const handleDownload = () => {
-    setDownloadingUsers(true);
-    getCustomers().then((resp) => {
-      console.log(resp.data);
-
-      setDownloadingUsers(false);
-    });
+  const handleOnChangeSSN = (e) => {
+    console.log(e.target.value);
+    setSearchSSN(e.target.value);
+  };
+  const handleOnChangeFirstName = (e) => {
+    console.log(e.target.value);
+    setSearchFirstName(e.target.value);
+  };
+  const handleOnChangeLastName = (e) => {
+    console.log(e.target.value);
+    setSearchLastName(e.target.value);
+  };
+  const handleOnChangeEmail = (e) => {
+    console.log(e.target.value);
+    setSearchEmail(e.target.value);
   };
 
   const handleEdit = (userId) => {
-    navigate(`/manager/users/${userId}`);
+    navigate(`/manager/user/${userId}`);
   };
 
   useEffect(() => {
-    getCustomers().then((resp) => {
+    /* getCustomers().then((resp) => {
       setUsers(resp.data);
-      setLoadingUsers(false);
-    });
+      console.log(resp.data);
+      setLoadingUsers(false); 
+    }); */
   }, []);
 
   return (
     <>
-      <Form noValidate onSubmit={formik.handleSubmit}>
-        <Row>
-          <Form.Group as={Col} md={4} lg={8} className="mb-3">
-            <Form.Control
-              type="text"
-              placeholder="Enter first name"
-              {...formik.getFieldProps("firstName")}
-              isInvalid={!!formik.errors.firstName}
-            />
+      <div className="user-list-top ">
+        <Card
+          style={{
+            padding: "0.5px",
+            margin: "0.25px solid",
+            borderRadius: "10px",
+            background: " #FFFF",
+          }}
+        >
+          <form className="search-group" onSubmit={handleOnSubmit}>
+            <Container>
+              <Row>
+                <Form.Group
+                  as={Col}
+                  sm={6}
+                  md={6}
+                  lg={3}
+                  className="mb-3"
+                  style={{ textAlign: "left" }}
+                >
+                  <Form.Label className="mb-2">SSN</Form.Label>
+                  <Form.Control
+                    className="p-2"
+                    style={{
+                      border: "0.25px solid",
+                      padding: "5px",
+                      borderRadius: "10px",
+                    }}
+                    className="search"
+                    type="text"
+                    placeholder="Search..."
+                    as={MaskInput}
+                    maskChar="_"
+                    mask="000-00-0000"
+                    showMask
+                    alwaysShowMask
+                    value={searchSSN}
+                    onChange={handleOnChangeSSN}
+                  />
+                </Form.Group>{" "}
+                <Form.Group
+                  as={Col}
+                  sm={6}
+                  md={6}
+                  lg={3}
+                  className="mb-3"
+                  style={{ textAlign: "left" }}
+                >
+                  <Form.Label className="mb-2">First Name</Form.Label>
+                  <Form.Control
+                    className="p-2"
+                    style={{
+                      border: "0.25px solid",
+                      padding: "5px",
+                      borderRadius: "10px",
+                    }}
+                    className="search"
+                    type="text"
+                    autoFocus="autofocus"
+                    placeholder="Search..."
+                    value={searchFirstName}
+                    onChange={handleOnChangeFirstName}
+                  />
+                </Form.Group>{" "}
+                <Form.Group
+                  as={Col}
+                  sm={6}
+                  md={6}
+                  lg={3}
+                  className="mb-3"
+                  style={{ textAlign: "left" }}
+                >
+                  <Form.Label className="mb-2">Last Name</Form.Label>
+                  <Form.Control
+                    className="p-2"
+                    style={{
+                      border: "0.25px solid",
+                      padding: "5px",
+                      borderRadius: "10px",
+                    }}
+                    className="search"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchLastName}
+                    onChange={handleOnChangeLastName}
+                  />
+                </Form.Group>
+                <Form.Group
+                  as={Col}
+                  sm={6}
+                  md={6}
+                  lg={3}
+                  className="mb-3"
+                  style={{ textAlign: "left" }}
+                >
+                  <Form.Label className="mb-2">Email</Form.Label>
+                  <Form.Control
+                    className="p-2"
+                    style={{
+                      border: "0.25px solid",
+                      padding: "5px",
+                      borderRadius: "10px",
+                    }}
+                    className="search"
+                    type="text"
+                    placeholder="Search..."
+                    value={searchEmail}
+                    onChange={handleOnChangeEmail}
+                  />
+                </Form.Group>
+              </Row>
 
-            <Form.Control.Feedback type="invalid">
-              {formik.errors.firstName}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md={4} lg={2} className="mb-5">
-            <Form.Select
-              {...formik.getFieldProps("currencyCode")}
-              isInvalid={!!formik.errors.currencyCode}
-            >
-              <option value="">Currency Code</option>
-              <option value="EUR">EUR</option>
-              <option value="USD">USD</option>
-              <option value="TRY">TRY</option>
-            </Form.Select>
-            <Form.Control.Feedback type="invalid">
-              {formik.errors.currencyCode}
-            </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md={4} lg={2} className="mb-3">
-            <Button
-              variant="secondary"
-              type="button"
-              variant="secondary"
-              onClick={() => navigate(-1)}
-            >
-              Cancel
-            </Button>
-          </Form.Group>
-        </Row>
-      </Form>
+              <Row>
+                <Button variant="danger" type="submit">
+                  Search
+                </Button>
+              </Row>
+            </Container>
+          </form>
+        </Card>
+      </div>
 
       <Table striped bordered hover responsive className="admin-list mt-3">
-        <thead>
-          <tr>
-            <th>SSN</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Roles</th>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody>
           {loadingUsers ? (
             <tr>
@@ -149,16 +220,26 @@ const Users = () => {
             </tr>
           ) : (
             users.map((user, index) => (
-              <tr
-                key={index}
-                onClick={() => handleEdit(user.id)}
-                className="cursor-hand"
-              >
-                <td>{user.ssn}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.roles.join(" ")}</td>
+              <tr key={index} className="cursor-hand">
+                <td onClick={() => handleEdit(user.id)}>{index + 1}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.ssn}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.firstName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.lastName}</td>
+                <td onClick={() => handleEdit(user.id)}>{user.email}</td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.mobilePhoneNumber}
+                </td>
+                <td onClick={() => handleEdit(user.id)}>
+                  {user.roles.join(" ")}
+                </td>
+                <td>
+                  <Button as={Link} to={`/account/user/${user.id}/manager`}>
+                    Accounts
+                  </Button>
+                  <Button as={Link} to={`/transfer/user/${user.id}/manager`}>
+                    Transfers
+                  </Button>
+                </td>
               </tr>
             ))
           )}

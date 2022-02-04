@@ -13,8 +13,7 @@ const Features = () => {
         
         
 <div className="home-feature">
-<OwlCarousel className='home-feature-carousel owl-theme' loop margin={10} nav dots={false}
-	navText={['<span class="flaticon-left-arrow"></span>','<span class="flaticon-right-arrow"></span>']}>
+<OwlCarousel className='home-feature-carousel owl-carousel owl-theme' loop margin={10} nav>
 <div className='item'>
                                                   
         <h4><SectionTitleItem renk="feature-carousel-thumb status-blue"  resim="assets/images/file.png" baslik="Fully Encrypted" aciklama="Lorem ipsum dolor sit amet, cosectetur adipisicing elit, sed

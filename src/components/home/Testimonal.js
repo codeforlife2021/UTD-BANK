@@ -27,7 +27,7 @@ const Testimonal = ({ image, title, d1, d2 }) => {
             <h3 className="client-caption-title">{d1}</h3>
             <h4 className="client-caption-designation">{d2}</h4>
           </div>
-          {/* <div className="client-carousel-control">
+          <div className="client-carousel-control">
             <button className="carousel-control-item carousel-control-item-left">
               <span>
                 <i className="flaticon-right-arrow"></i>
@@ -38,7 +38,7 @@ const Testimonal = ({ image, title, d1, d2 }) => {
                 <i className="flaticon-left-arrow"></i>
               </span>
             </button>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
