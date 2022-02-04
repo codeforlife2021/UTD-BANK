@@ -1,6 +1,7 @@
 import React from "react";
 import SectionTitle from "./SectionTitle";
 import Testimonal from "./Testimonal";
+import OwlCarousel from "react-owl-carousel";
 const Testimonals = (props) => {
   return (
     <section className="home-client-section pt-100 pb-50">
@@ -9,8 +10,22 @@ const Testimonals = (props) => {
           title="Clients Feedback"
           description=" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore"
         />
-        <div className="client-carousel-content">
-          <div className="client-carousel owl-carousel owl-theme">
+         <OwlCarousel
+            className="owl-theme client-carousel"
+            loop
+            margin={10}
+            nav={true}
+            items={1}
+            dots={false}
+            navText={[
+              '<span class="flaticon-left-arrow"></span>',
+              '<span class="flaticon-right-arrow"></span>',
+            ]}
+            navClass={[
+              "carousel-control-item carousel-control-item-left",
+              "carousel-control-item carousel-control-item-right",
+            ]}
+          >
             <Testimonal
               image="assets/images/carousel-1.png"
               title="Awesome dolor sit amet, consectetur adipisicing elit sed do eusmod tempor incididunt ut labore et dolore magna aliquaenminim veniam quis nostrud dolore magn doloreut labore dolore magn."
@@ -23,8 +38,7 @@ const Testimonals = (props) => {
               d1="Sienna Miller"
               d2="CTO"
             />
-          </div>
-        </div>
+        </OwlCarousel> 
       </div>
     </section>
   );
