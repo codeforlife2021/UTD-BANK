@@ -38,7 +38,7 @@ const LoginForm = () => {
             setLoading(false);
             console.log(respUser);
             dispatchUser(loginSuccess(respUser.data));
-            navigate("/");
+            navigate("/my-dashboard");
           })
           .catch((err) => {
             toast(err.response.data.message);

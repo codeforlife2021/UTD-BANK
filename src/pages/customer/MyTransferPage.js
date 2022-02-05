@@ -22,7 +22,7 @@ const MyTransferPage = () => {
         </Row>
       </Container>
       <Spacer />
-      <Spacer />
+      <Footer />
     </>
   );
 };

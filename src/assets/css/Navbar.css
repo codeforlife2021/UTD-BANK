@@ -14,8 +14,8 @@
   color: #e63719;
 }
 
-.menu-bars a:hover {
-  color: rgb(11, 33, 84);
+.menu-bars svg:hover {
+  color: rgb(11, 33, 84) !important;
 }
 
 .nav-menu {
@@ -60,6 +60,8 @@
 
 .nav-text a:hover {
   background-color: rgb(11, 33, 84);
+
+  color: #fff;
 }
 
 .nav-menu-items {

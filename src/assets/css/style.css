@@ -180,10 +180,6 @@ a:hover {
   border-bottom: 0.3rem solid var(--color2);
 }
 
-.menubar .navbar-nav a:hover {
-  color: var(--color2) !important;
-}
-
 /************ PAGE HEADER ************/
 
 .page-header {
@@ -291,6 +287,7 @@ footer {
 }
 .blue-gradient {
   background: var(--color3);
+  color: #fff;
 }
 .home-service-start h2 {
   color: var(--color2);
@@ -335,6 +332,7 @@ footer {
 .blue-gradient:hover {
   background: var(--color3);
   border-color: white;
+  color: #fff;
 }
 
 .btn-check:hover + .btn-primary:hover {

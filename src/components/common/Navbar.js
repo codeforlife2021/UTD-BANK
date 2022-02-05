@@ -81,8 +81,8 @@ function Navbar() {
                 <div className="divider"></div>
                 <li className="nav-text">
                   <Link to="/my-dashboard">
-                    <FaIcons.FaRegMoneyBillAlt />
-                    <span>UTDBANK</span>
+                    <AiIcons.AiFillHome />
+                    <span>My-UTDBANK</span>
                   </Link>
                 </li>
                 <li className="nav-text">
