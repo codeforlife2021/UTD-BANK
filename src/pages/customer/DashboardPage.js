@@ -1,12 +1,16 @@
 import React from "react";
 import Footer from "../../components/common/Footer";
-import Navbar from "../../components/common/Navbar";
-import DashboardNavbar from "./../../components/dashboard/DashboardNavbar";
+
+import Analytics from "../../components/dashboard/Analytics";
+import DashboardWelcome from "../../components/dashboard/DashboardWelcome";
+import Transfers from "../../components/dashboard/Transfers";
 
 const DashboardPage = () => {
   return (
     <>
-      <DashboardNavbar />
+      <DashboardWelcome />
+      <Analytics />
+      <Transfers />
       <Footer />
     </>
   );

@@ -28,6 +28,7 @@ const HomePage = () => {
       <Facility />
       <HomeContact />
       <Testimonals />
+
       <Footer />
     </>
   );
