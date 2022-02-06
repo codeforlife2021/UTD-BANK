@@ -1,4 +1,5 @@
 import "./App.css";
+
 import CustomRoutes from "./router/CustomRoutes";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -33,15 +34,14 @@ function App() {
     loadData();
   }, []);
 
-  
-    return (
-      <BrowserRouter>
-        <TopBar />
-        <CustomRoutes />
+  return (
+    <BrowserRouter>
+      <TopBar />
+      <CustomRoutes />
 
-        <ToastContainer />
-      </BrowserRouter>
-    );
+      <ToastContainer />
+    </BrowserRouter>
+  );
 }
 
 export default App;

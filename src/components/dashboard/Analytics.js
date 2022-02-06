@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { GiReceiveMoney, GiPayMoney } from "react-icons/gi";
 import { IoStatsChart } from "react-icons/io5";
 import styled from "styled-components";
-import Button from "../common/Button";
 import { getAccounts } from "../../api/account-service";
 import { getTransfers } from "../../api/transfer-service";
 import SectionTitle from "../home/SectionTitle";
+import CustomButton from "../common/CustomButton";
 
 const Analytics = () => {
   const [accounts, setAccounts] = useState([]);
@@ -69,7 +69,7 @@ const Analytics = () => {
                   <h3 className="box-card-title mb-20">Current Balance</h3>
                   <p className="box-card-para">{`${getTotalBalance()} $`}</p>
 
-                  <Button title="My-Accounts" link="/my-account" />
+                  <CustomButton title="My-Accounts" link="/my-account" />
                 </div>
               </div>
             </div>
@@ -83,7 +83,7 @@ const Analytics = () => {
                 <div className="box-card-details">
                   <h3 className="box-card-title mb-20">Earnings This Month</h3>
                   <p className="box-card-para">{`${getSpent()} $`}</p>
-                  <Button title="My-Transfers" link="/my-transfers" />
+                  <CustomButton title="My-Transfers" link="/my-transfers" />
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ const Analytics = () => {
                 <div className="box-card-details">
                   <h3 className="box-card-title mb-20">Spent This Month</h3>
                   <p className="box-card-para">{`${getSpent()} $`}</p>
-                  <Button title="My-Transfers" link="/my-transfers" />
+                  <CustomButton title="My-Transfers" link="/my-transfers" />
                 </div>
               </div>
             </div>

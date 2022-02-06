@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Table, Spinner, Button, Modal } from "react-bootstrap";
+import { Spinner, Button, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAccount, getAccounts } from "../../api/account-service";
 import { getTransfersbyAccount } from "../../api/transfer-service";
-
+import { Icon, Table } from "semantic-ui-react";
+import moment from "moment";
 const MyAccount = () => {
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
@@ -38,18 +39,20 @@ const MyAccount = () => {
   return (
     <>
       <Link to="/create-account">Create a new account</Link>
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Account No</th>
-            <th>Account Type</th>
-            <th>Currency Code</th>
-            <th>Account Status</th>
-            <th>Balance</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table color="orange">
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Account No</Table.HeaderCell>
+            <Table.HeaderCell>Account Type</Table.HeaderCell>
+            <Table.HeaderCell>Currency Code</Table.HeaderCell>
+            <Table.HeaderCell>Account Status</Table.HeaderCell>
+            <Table.HeaderCell>Account Status</Table.HeaderCell>
+            <Table.HeaderCell>Balance</Table.HeaderCell>
+            <Table.HeaderCell></Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+
+        <Table.Body>
           {loading && (
             <tr>
               <td colSpan={5}>
@@ -58,14 +61,23 @@ const MyAccount = () => {
             </tr>
           )}
           {accounts.map((item, index) => (
-            <tr key={index} className="cursor-hand">
-              <td>{index + 1}</td>
-              <td>{item.accountNo}</td>
-              <td>{item.accountType}</td>
-              <td>{item.currencyCode}</td>
-              <td>{item.accountStatusType}</td>
-              <td>{item.balance}</td>
-              <td>
+            <Table.Row key={index} className="cursor-hand">
+              <Table.Cell>{index + 1}</Table.Cell>
+              <Table.Cell>{item.accountNo}</Table.Cell>
+              <Table.Cell>{item.accountType}</Table.Cell>
+              <Table.Cell>{item.currencyCode}</Table.Cell>
+              {item.accountStatusType === "ACTIVE" ? (
+                <Table.Cell textAlign="center">
+                  <Icon color="green" name="checkmark" />
+                </Table.Cell>
+              ) : (
+                <Table.Cell textAlign="center">
+                  <Icon color="red" name="close" />
+                </Table.Cell>
+              )}
+
+              <Table.Cell>{item.balance}</Table.Cell>
+              <Table.Cell>
                 <Button
                   variant="primary"
                   onClick={() => showDetails(item.accountNo)}
@@ -80,111 +92,121 @@ const MyAccount = () => {
                   Transfer <br />
                   Details
                 </Button>
-              </td>
-            </tr>
+              </Table.Cell>
+            </Table.Row>
           ))}
-        </tbody>
-
-        <Modal
-          show={showDetail}
-          onHide={() => setShowDetail(false)}
-          animation={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Accounts Details</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th colSpan={2}>
-                    <h3>Account No : {accountDetail.accountNo}</h3>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Description</td>
-                  <td>{accountDetail.description}</td>
-                </tr>
-                <tr>
-                  <td>Balance</td>
-                  <td>{accountDetail.balance}</td>
-                </tr>
-                <tr>
-                  <td>Currency Code</td>
-                  <td>{accountDetail.currencyCode}</td>
-                </tr>
-                <tr>
-                  <td>Account Type</td>
-                  <td>{accountDetail.accountType}</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>{accountDetail.accountStatusType}</td>
-                </tr>
-                <tr>
-                  <td>Created</td>
-                  <td>{accountDetail.createdDate}</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-
-        <Modal
-          show={showTransfer}
-          onHide={() => setShowTransfer(false)}
-          animation={false}
-        >
-          <Modal.Header closeButton>
-            <Modal.Title>Transfer Details</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>From transfer</th>
-                  <th>To transfer</th>
-                  <th>Currency Code</th>
-                  <th>Transaction transfer</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {loading && (
-                  <tr>
-                    <td colSpan={5}>
-                      <Spinner animation="border" size="sm" /> Loading...
-                    </td>
-                  </tr>
-                )}
-                {transfers.map((item, index) => (
-                  <tr key={index} className="cursor-hand">
-                    <td>{index + 1}</td>
-                    <td>{item.fromAccountId}</td>
-                    <td>{item.toAccountId}</td>
-                    <td>{item.transactionAmount}</td>
-                    <td>{item.currencyCode}</td>
-                    <td>{item.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={() => setShowTransfer(false)}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+        </Table.Body>
       </Table>
+
+      <Modal
+        show={showDetail}
+        onHide={() => setShowDetail(false)}
+        animation={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Account Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table color="orange">
+            <Table.Header>
+              <Table.Row>
+                <Table.Cell colSpan={2}>
+                  <h3>Account No : {accountDetail.accountNo}</h3>
+                </Table.Cell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>Description</Table.Cell>
+                <Table.Cell>{accountDetail.description}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>Balance</Table.Cell>
+                <Table.Cell>{accountDetail.balance}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>Currency Code</Table.Cell>
+                <Table.Cell>{accountDetail.currencyCode}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>Account Type</Table.Cell>
+                <Table.Cell>{accountDetail.accountType}</Table.Cell>
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>Status</Table.Cell>
+                {accountDetail.accountStatusType === "ACTIVE" ? (
+                  <Table.Cell>
+                    <Icon color="green" name="checkmark" />
+                  </Table.Cell>
+                ) : (
+                  <Table.Cell>
+                    <Icon color="red" name="close" />
+                  </Table.Cell>
+                )}
+              </Table.Row>
+              <Table.Row>
+                <Table.Cell>Created</Table.Cell>
+                <Table.Cell>
+                  {moment(accountDetail.createdDate).format("LLL")}
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal
+        show={showTransfer}
+        onHide={() => setShowTransfer(false)}
+        animation={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Transfers</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>From transfer</th>
+                <th>To transfer</th>
+                <th>Currency Code</th>
+                <th>Transaction transfer</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {loading && (
+                <tr>
+                  <td colSpan={5}>
+                    <Spinner animation="border" size="sm" /> Loading...
+                  </td>
+                </tr>
+              )}
+              {transfers.map((item, index) => (
+                <tr key={index} className="cursor-hand">
+                  <td>{index + 1}</td>
+                  <td>{item.fromAccountId}</td>
+                  <td>{item.toAccountId}</td>
+                  <td>{item.transactionAmount}</td>
+                  <td>{item.currencyCode}</td>
+                  <td>{item.description}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowTransfer(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

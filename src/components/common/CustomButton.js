@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ title, link }) => {
+const CustomButton = ({ title, link }) => {
   return (
     <>
       <Link to={link} className="btn1 blue-gradient btn-with-image">
@@ -13,4 +13,4 @@ const Button = ({ title, link }) => {
   );
 };
 
-export default Button;
+export default CustomButton;

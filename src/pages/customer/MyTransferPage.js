@@ -13,7 +13,7 @@ const MyTransferPage = () => {
         image="/assets/images/myaccountspage.jpg"
         title="My Transfers"
       />
-      <Spacer />
+      <Spacer size={60} />
       <Container>
         <Row>
           <Col>
