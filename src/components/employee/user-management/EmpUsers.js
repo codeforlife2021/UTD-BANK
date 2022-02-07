@@ -74,7 +74,7 @@ const EmpUsers = () => {
   };
 
   const handleEdit = (userId) => {
-    navigate(`/emp-usermanagement/${userId}`);
+    window.open(`/emp-usermanagement/${userId}`);
   };
 
   return (
@@ -225,14 +225,17 @@ const EmpUsers = () => {
                         </p>
 
                         <Button onClick={() => handleEdit(user.id)}>
-                          Continue
+                          Users
                         </Button>
                       </Grid.Column>
                       <Grid.Column textAlign="center">
                         <Header as="h4">Accounts</Header>
                         <p>New Account,Delete, Update</p>
-
-                        <Button as={Link} to={`/emp-useraccount/${user.id}`}>
+                        <Button
+                          as="a"
+                          href={`/emp-useraccount/${user.id}`}
+                          target="_blank"
+                        >
                           Accounts
                         </Button>
                       </Grid.Column>
@@ -242,8 +245,11 @@ const EmpUsers = () => {
                           <br /> Transfers,
                           <br /> TransfersDetails
                         </p>
-                        {/* <Button as="a" href="https://www.google.com" target="_blank" variant="secondary"></Button> */}
-                        <Button as={Link} to={`/emp-usertransfer/${user.id}`}>
+                        <Button
+                          as="a"
+                          href={`/emp-usertransfer/${user.id}`}
+                          target="_blank"
+                        >
                           Transfers
                         </Button>
                       </Grid.Column>
@@ -267,10 +273,7 @@ const Section = styled.section`
     justify-content:center;
     flex-direction:column;
     .search-group {
-  
       margin-left:10vw;
-    
-
      .search{
     padding: "5px";
     border: 0.25px solid;

@@ -7,20 +7,31 @@ import { getAccounts } from "../../api/account-service";
 import { getTransfers } from "../../api/transfer-service";
 import SectionTitle from "../home/SectionTitle";
 import CustomButton from "../common/CustomButton";
+import { toast } from "react-toastify";
 
 const Analytics = () => {
   const [accounts, setAccounts] = useState([]);
   const [transfers, setTransfers] = useState([]);
   useEffect(() => {
-    getAccounts().then((resp) => {
-      setAccounts(resp.data);
-    });
+    getAccounts()
+      .then((resp) => {
+        setAccounts(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        console.log(err.response.data.message);
+      });
   }, []);
 
   useEffect(() => {
-    getTransfers().then((resp) => {
-      setTransfers(resp.data);
-    });
+    getTransfers()
+      .then((resp) => {
+        setTransfers(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        console.log(err.response.data.message);
+      });
   }, []);
 
   const getTotalBalance = () => {

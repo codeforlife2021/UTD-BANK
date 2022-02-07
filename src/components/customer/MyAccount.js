@@ -5,6 +5,7 @@ import { getAccount, getAccounts } from "../../api/account-service";
 import { getTransfersbyAccount } from "../../api/transfer-service";
 import { Icon, Table } from "semantic-ui-react";
 import moment from "moment";
+import { toast } from "react-toastify";
 const MyAccount = () => {
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
@@ -18,27 +19,44 @@ const MyAccount = () => {
 
   const showDetails = (id) => {
     setShowDetail(true);
-    getAccount(id).then((resp) => {
-      setAccountDetail(resp.data);
-    });
+    getAccount(id)
+      .then((resp) => {
+        setAccountDetail(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   };
   const transferDetail = (id) => {
     setShowTransfer(true);
-    getTransfersbyAccount(id).then((resp) => {
-      setTransfers(resp.data);
-    });
+    getTransfersbyAccount(id)
+      .then((resp) => {
+        setTransfers(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
-    getAccounts().then((resp) => {
-      setAccounts(resp.data);
-      setLoading(false);
-    });
+    getAccounts()
+      .then((resp) => {
+        setAccounts(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
 
   return (
     <>
-      <Link to="/create-account">Create a new account</Link>
       <Table color="orange">
         <Table.Header>
           <Table.Row>

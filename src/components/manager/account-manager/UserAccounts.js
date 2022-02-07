@@ -16,8 +16,11 @@ import {
 import CustomButton from "../../common/CustomButton";
 import SectionTitle from "../../home/SectionTitle";
 import Spacer from "../../common/Spacer";
+import { toast } from "react-toastify";
 const UserAccounts = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingAccount, setLoadingAccount] = useState(true);
+  const [loadingTransfer, setLoadingTransfer] = useState(true);
   const [accounts, setAccounts] = useState([]);
   const [accountDetail, setAccountDetail] = useState({});
   const [transfers, setTransfers] = useState([]);
@@ -30,23 +33,46 @@ const UserAccounts = () => {
 
   const showDetails = (id) => {
     setShowDetail(true);
-    getAccountByAccountNo(id).then((resp) => {
-      setAccountDetail(resp.data);
-    });
+    setLoadingAccount(true);
+    getAccountByAccountNo(id)
+      .then((resp) => {
+        setAccountDetail(resp.data);
+        setLoadingAccount(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingAccount(false);
+        console.log(err.response.data.message);
+      });
   };
   const transferDetail = (id) => {
     setShowTransfer(true);
-    getTransfersByAccountNo(id).then((resp) => {
-      setTransfers(resp.data);
-    });
+    setLoadingTransfer(true);
+    getTransfersByAccountNo(id)
+      .then((resp) => {
+        setTransfers(resp.data);
+        setLoadingTransfer(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingTransfer(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
+    setLoading(true);
     console.log("userid", JSON.stringify(userId));
-    getAccountsByCustomerId(userId).then((resp) => {
-      setAccounts(resp.data);
-      setLoading(false);
-    });
+    getAccountsByCustomerId(userId)
+      .then((resp) => {
+        setAccounts(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
   return (
     <>
@@ -89,7 +115,8 @@ const UserAccounts = () => {
             {loading && (
               <tr>
                 <td colSpan={5}>
-                  <Spinner animation="border" size="sm" /> Loading...
+                  <Spinner animation="border" size="sm" variant="danger" />{" "}
+                  Loading...
                 </td>
               </tr>
             )}
@@ -148,6 +175,14 @@ const UserAccounts = () => {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
+                {loadingAccount && (
+                  <tr>
+                    <td colSpan={5}>
+                      <Spinner animation="border" size="sm" variant="danger" />{" "}
+                      Loading...
+                    </td>
+                  </tr>
+                )}
                 <Table.Row>
                   <Table.Cell>Description</Table.Cell>
                   <Table.Cell>{accountDetail.description}</Table.Cell>
@@ -215,7 +250,7 @@ const UserAccounts = () => {
                 </tr>
               </thead>
               <tbody>
-                {loading && (
+                {loadingTransfer && (
                   <tr>
                     <td colSpan={5}>
                       <Spinner animation="border" size="sm" /> Loading...

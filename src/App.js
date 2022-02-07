@@ -10,7 +10,6 @@ import { getUser } from "./api/user-service";
 import { useStore } from "./store";
 import TopBar from "./components/common/TopBar";
 import Footer from "./components/common/Footer";
-import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +19,7 @@ function App() {
     try {
       /**** LOAD USER ****/
       const respUser = await getUser();
+
       if (respUser.status !== 200) throw "An error occured whlie getting user";
       dispatchUser(loginSuccess(respUser.data));
 
@@ -33,16 +33,17 @@ function App() {
   useEffect(() => {
     loadData();
   }, []);
+  if (loading) return <LoadingPage />;
+  else
+    return (
+      <BrowserRouter>
+        <TopBar />
+        <CustomRoutes />
 
-  return (
-    <BrowserRouter>
-      <TopBar />
-      <CustomRoutes />
-
-      <ToastContainer />
-      <Footer />
-    </BrowserRouter>
-  );
+        <ToastContainer />
+        <Footer />
+      </BrowserRouter>
+    );
 }
 
 export default App;

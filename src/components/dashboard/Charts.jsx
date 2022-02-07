@@ -11,6 +11,7 @@ import {
 import { AreaChart } from "recharts";
 import { Area } from "recharts";
 import { getTransfers } from "../../api/transfer-service";
+import { toast } from "react-toastify";
 
 const colors = {
   teal: "#e63719",
@@ -24,9 +25,14 @@ const Charts = () => {
   let monatTransfers = [{ x: "", y: 0 }];
 
   useEffect(() => {
-    getTransfers().then((resp) => {
-      setTransfers(resp.data);
-    });
+    getTransfers()
+      .then((resp) => {
+        setTransfers(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        console.log(err.response.data.message);
+      });
   }, []);
 
   const getMonatTransfers = () => {
