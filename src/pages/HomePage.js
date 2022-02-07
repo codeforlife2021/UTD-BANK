@@ -12,6 +12,7 @@ import Testimonals from "../components/home/Testimonals";
 import TopBar from "../components/common/TopBar";
 import Menu from "../components/common/Menu";
 import Footer from "../components/common/Footer";
+import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 
 const HomePage = () => {
   return (
@@ -28,8 +29,7 @@ const HomePage = () => {
       <Facility />
       <HomeContact />
       <Testimonals />
-
-      <Footer />
+      <ScrollToTopOnMount />
     </>
   );
 };

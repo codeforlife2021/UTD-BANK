@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../../components/common/Footer";
+import ScrollToTopOnMount from "../../components/common/ScrollToTopOnMount";
 
 import Analytics from "../../components/dashboard/Analytics";
 import DashboardWelcome from "../../components/dashboard/DashboardWelcome";
@@ -11,7 +12,7 @@ const DashboardPage = () => {
       <DashboardWelcome />
       <Analytics />
       <Transfers />
-      <Footer />
+      <ScrollToTopOnMount />
     </>
   );
 };

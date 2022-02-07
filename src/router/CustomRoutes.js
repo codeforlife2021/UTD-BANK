@@ -10,93 +10,45 @@ import TermsPage from "../pages/TermsPage";
 import PricingPage from "../pages/PricingPage";
 import PrivacyPolicyPage from "../pages/PrivacyPolicyPage";
 import AuthenticationPage from "../pages/AuthenticationPage";
-import AccountDetailManagementPage from "../pages/employee-manager/AccountDetailManagementPage";
-import AccountManagementPage from "../pages/employee-manager/AccountManagementPage";
-import UserDetailsManagementPage from "../pages/employee-manager/UserDetailsManagementPage";
-import UserManagementPage from "../pages/employee-manager/UserManagementPage";
+
 import ForgetPasswordPage from "../pages/ForgetPasswordPage";
 import ProfilePage from "../pages/customer/ProfilePage";
 import MyAccountPage from "../pages/customer/MyAccountPage";
-import NewAccountPage from "./../pages/customer/NewAccountPage";
 import MyTransferPage from "./../pages/customer/MyTransferPage";
 import NewTransferPage from "../pages/customer/NewTransferPage";
 import PrivateRoute from "./PrivateRoute";
-import AccountEdit from "../pages/manager/AccountEdit";
-import AccountPage from "../pages/manager/AccountPage";
-
-import AccountsPage from "../pages/employee/AccountsPage";
-import AccountEditPage from "../pages/employee/AccountEditPage";
-import AccountsUser from "../components/employee/AccountsUser";
-import AccountCreatePage from "../pages/employee/AccountCreatePage";
-
-import UsersPage from "../pages/manager/UsersPage";
-import UserEditPage from "../pages/manager/UserEditPage";
-import NewTransfer from "../components/customer/NewTransfer";
-import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 import DashboardPage from "../pages/customer/DashboardPage";
-
-import TransferDetailsPageE from "../pages/employee/TransferDetailsPageE";
-import TransfersByUserIdPageE from "../pages/employee/TransfersByUserIdPageE";
-
-import TransferDetailsPageM from "../pages/manager/TransferDetailsPageM";
-import TransfersByUserIdPageM from "../pages/manager/TransfersByUserIdPageM";
+import UsersPage from "../pages/manager/user-management/UsersPage";
+import UserEditPage from "../pages/manager/user-management/UserEditPage";
+import UserTransferPage from "../pages/manager/transfer-management/UserTransferPage";
+import UserAccountPage from "../pages/manager/account-management/UserAccountPage";
+import NewAccountPage from "../pages/manager/account-management/NewAccountPage";
+import AccountEditPage from "../pages/manager/account-management/AccountEditPage";
+import EmpUserspage from "../pages/employee/user-management/EmpUsersPage";
+import EmpUserEditPage from "../pages/employee/user-management/EmpUserEditPage";
+import EmpUserAccountPage from "../pages/employee/account-management/EmpUserAccountPage";
+import EmpNewAccountPage from "../pages/employee/account-management/EmpNewAccountPage";
+import EmpAccountEditPage from "../pages/employee/account-management/EmpAccountEditPage";
+import EmpUserTransferPage from "../pages/employee/transfer-management/EmpUserTransferPage";
+import NotAuthorizedPage from "../pages/customer/NotAuthorizedPage";
 
 const CustomRoutes = () => {
   return (
     <Routes>
-      {/* EMPLOYEE-MANAGER ROUTES */}
+      {/* MANAGER*/}
+      {/* User-Management */}
 
       <Route
-        path="/account-details-management"
-        element={<AccountDetailManagementPage />}
-      />
-      <Route path="/account-management" element={<AccountManagementPage />} />
-      <Route
-        path="/user-details-management"
-        element={<UserDetailsManagementPage />}
-      />
-      <Route path="/user-management" element={<UserManagementPage />} />
-
-      {/* MANAGER */}
-
-      <Route
-        path="/transfer/:id/manager"
-        element={
-          <PrivateRoute manager={true}>
-            <TransferDetailsPageM />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/transfer/user/:userId/manager"
-        element={
-          <PrivateRoute manager={true}>
-            <TransfersByUserIdPageM />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/manager/user/:userId"
-        element={
-          <PrivateRoute manager={true}>
-            <UserEditPage />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/manager/users"
+        exact
+        path="/usermanagement"
         element={
           <PrivateRoute manager={true}>
             <UsersPage />
           </PrivateRoute>
         }
       />
-
       <Route
-        path="/manager/users/:customerId"
+        path="/usermanagement/:userId"
         element={
           <PrivateRoute manager={true}>
             <UserEditPage />
@@ -104,75 +56,103 @@ const CustomRoutes = () => {
         }
       />
 
+      {/* Account Management */}
       <Route
-        path="/account/:accountNo/manager"
+        path="/useraccount/:userId"
         element={
           <PrivateRoute manager={true}>
-            <AccountEdit />
+            <UserAccountPage />
           </PrivateRoute>
         }
       />
       <Route
-        path="/manager/accounts"
+        path="/create-account/:userId"
         element={
           <PrivateRoute manager={true}>
-            <AccountPage />
-          </PrivateRoute>
-        }
-      />
-
-      {/* EMPLOYEE */}
-
-      <Route
-        path="/transfer/:id/employee"
-        element={
-          <PrivateRoute employee={true}>
-            <TransferDetailsPageE />
+            <NewAccountPage />
           </PrivateRoute>
         }
       />
 
       <Route
-        path="/transfer/user/:userId/employee"
+        path="/accountedit/:accountNo"
         element={
-          <PrivateRoute employee={true}>
-            <TransfersByUserIdPageE />
-          </PrivateRoute>
-        }
-      />
-
-      <Route
-        path="/account/:accountNo/employee"
-        element={
-          <PrivateRoute employee={true}>
+          <PrivateRoute manager={true}>
             <AccountEditPage />
           </PrivateRoute>
         }
       />
+      {/* Transfer Management */}
+
       <Route
-        path="/employee/accounts"
+        path="/usertransfer/:userId"
+        element={
+          <PrivateRoute manager={true}>
+            <UserTransferPage />
+          </PrivateRoute>
+        }
+      />
+
+      {/* ----------------------------------------------------------------------------------------------------- */}
+
+      {/* EMPLOYEE*/}
+      {/* User-Management */}
+
+      <Route
+        path="/emp-usermanagement"
         element={
           <PrivateRoute employee={true}>
-            <AccountsPage />
+            <EmpUserspage />
           </PrivateRoute>
         }
       />
       <Route
-        path="account/user/:userId/employee"
+        path="/emp-usermanagement/:userId"
         element={
           <PrivateRoute employee={true}>
-            <AccountsUser />
+            <EmpUserEditPage />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Account Management */}
+      <Route
+        path="/emp-useraccount/:userId"
+        element={
+          <PrivateRoute employee={true}>
+            <EmpUserAccountPage />
           </PrivateRoute>
         }
       />
       <Route
-        path="account/:userId/create"
+        path="/emp-create-account/:userId"
         element={
           <PrivateRoute employee={true}>
-            <AccountCreatePage />
+            <EmpNewAccountPage />
           </PrivateRoute>
         }
       />
+
+      <Route
+        path="/emp-accountedit/:accountNo"
+        element={
+          <PrivateRoute employee={true}>
+            <EmpAccountEditPage />
+          </PrivateRoute>
+        }
+      />
+      {/* Transfer Management */}
+
+      <Route
+        path="/emp-usertransfer/:userId"
+        element={
+          <PrivateRoute employee={true}>
+            <EmpUserTransferPage />
+          </PrivateRoute>
+        }
+      />
+
+      {/* ----------------------------------------------------------------------------------------------------- */}
 
       {/* CUSTOMER ROUTES */}
 
@@ -241,9 +221,10 @@ const CustomRoutes = () => {
           </PrivateRoute>
         }
       />
-
+      {/* ----------------------------------------------------------------------------------------------------- */}
       {/*ALL USER */}
-      <Route path="/" element={<HomePage />} />
+      <Route exact path="/" element={<HomePage />} />
+      <Route path="/not-authorized" element={<NotAuthorizedPage />} />
       <Route path="/about-us" element={<AboutUsPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/features" element={<FeaturesPage />} />

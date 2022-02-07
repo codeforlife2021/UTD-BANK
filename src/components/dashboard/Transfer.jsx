@@ -33,8 +33,9 @@ export default function Transfer() {
                   </div>
                   <div className="box-card-details">
                     <h3 className="box-card-title mb-20">
-                      from &nbsp;
-                      {transaction.fromAccountId}
+                      From &nbsp;
+                      {transaction.fromAccountId} &nbsp; to &nbsp;{" "}
+                      {transaction.toAccountId}
                     </h3>
                     <p className="box-card-para">
                       {moment(transaction.transactionDate).format("LLL")}
@@ -58,13 +59,14 @@ export default function Transfer() {
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 
   .transactions {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 1rem;
+    margin-right: 3rem;
     .box-card-title {
       color: #e63719;
     }
@@ -74,7 +76,7 @@ const Section = styled.section`
       align-items: flex-start;
       &__title {
         display: flex;
-        gap: 1rem;
+        gap: 3rem;
         &__image {
           img {
             margin-top: 12px;

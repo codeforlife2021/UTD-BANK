@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import Footer from "../../components/common/Footer";
 import PageHeader from "../../components/common/PageHeader";
+import ScrollToTopOnMount from "../../components/common/ScrollToTopOnMount";
 import Spacer from "../../components/common/Spacer";
 import TopBar from "../../components/common/TopBar";
 import ProfileForm from "../../components/customer/ProfileForm";
@@ -42,6 +43,7 @@ const ProfilePage = () => {
         </Row>
       </Container>
       <Spacer />
+      <ScrollToTopOnMount />
     </>
   );
 };

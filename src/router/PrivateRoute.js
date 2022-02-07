@@ -7,11 +7,19 @@ const PrivateRoute = ({ children, admin, employee, manager }) => {
   const { userState } = useStore();
   const { isUserLogin, user } = userState;
 
-  if (!isUserLogin) return <Navigate to="/authentication" />;
+  if (!isUserLogin) {
+    return <Navigate to="/authentication" />;
+  }
 
-  if (admin && !isAdmin(user.roles)) return <Navigate to="/" />;
-  if (employee && !isEmployee(user.roles)) return <Navigate to="/" />;
-  if (manager && !isManager(user.roles)) return <Navigate to="/" />;
+  if (admin && !isAdmin(user.roles)) {
+    return <Navigate to="/not-authorized" />;
+  }
+  if (employee && !isEmployee(user.roles)) {
+    return <Navigate to="/not-authorized" />;
+  }
+  if (manager && !isManager(user.roles)) {
+    return <Navigate to="/not-authorized" />;
+  }
 
   return children;
 };

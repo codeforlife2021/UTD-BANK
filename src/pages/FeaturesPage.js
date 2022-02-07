@@ -4,6 +4,7 @@ import PageHeader from "../components/common/PageHeader";
 import TopBar from "../components/common/TopBar";
 import Menu from "../components/common/Menu";
 import Footer from "../components/common/Footer";
+import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 
 const FeaturesPage = () => {
   return (
@@ -13,7 +14,7 @@ const FeaturesPage = () => {
         image="/assets/images/feature-details-1.png"
         title="Features"
       />
-      <Footer />
+      <ScrollToTopOnMount />
     </div>
   );
 };
