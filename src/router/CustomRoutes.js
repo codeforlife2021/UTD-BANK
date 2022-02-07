@@ -30,7 +30,7 @@ import EmpUserAccountPage from "../pages/employee/account-management/EmpUserAcco
 import EmpNewAccountPage from "../pages/employee/account-management/EmpNewAccountPage";
 import EmpAccountEditPage from "../pages/employee/account-management/EmpAccountEditPage";
 import EmpUserTransferPage from "../pages/employee/transfer-management/EmpUserTransferPage";
-import NotAuthorizedPage from "../pages/customer/NotAuthorizedPage";
+import NotAuthorizedPage from "../pages/NotAuthorizedPage";
 
 const CustomRoutes = () => {
   return (

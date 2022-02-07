@@ -10,9 +10,11 @@ import {
   getTransferByAccountId,
   getTransfersByCustomerId,
 } from "../../../api/management-transfer";
+import { toast } from "react-toastify";
 
 const UserTransfers = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingTransfer, setLoadingTransfer] = useState(true);
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
 
@@ -32,17 +34,30 @@ const UserTransfers = () => {
   }, []);
   const showDetails = (id) => {
     setShow(true);
-
-    getTransferByAccountId(id).then((resp) => {
-      setTransferDetail(resp.data);
-    });
+    setLoadingTransfer(true);
+    getTransferByAccountId(id)
+      .then((resp) => {
+        setTransferDetail(resp.data);
+        setLoadingTransfer(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingTransfer(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
-    getTransfersByCustomerId(userId).then((resp) => {
-      setTransfers(resp.data);
-      setLoading(false);
-    });
+    getTransfersByCustomerId(userId)
+      .then((resp) => {
+        setTransfers(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
 
   return (
@@ -70,7 +85,8 @@ const UserTransfers = () => {
             {loading && (
               <tr>
                 <td colSpan={5}>
-                  <Spinner animation="border" size="sm" /> Loading...
+                  <Spinner animation="border" size="sm" variant="danger" />{" "}
+                  Loading...
                 </td>
               </tr>
             )}
@@ -103,6 +119,14 @@ const UserTransfers = () => {
               <Modal.Title>Transfer Details</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              {loadingTransfer && (
+                <tr>
+                  <td colSpan={5}>
+                    <Spinner animation="border" size="sm" variant="danger" />{" "}
+                    Loading...
+                  </td>
+                </tr>
+              )}
               <Table color="orange">
                 <Table.Header>
                   <Table.Row>

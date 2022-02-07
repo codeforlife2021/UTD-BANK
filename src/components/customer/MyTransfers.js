@@ -6,9 +6,11 @@ import { Icon, Table } from "semantic-ui-react";
 import moment from "moment";
 import CustomButton from "../common/CustomButton";
 import SectionTitle from "../home/SectionTitle";
+import { toast } from "react-toastify";
 
 const MyTransfers = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingDetail, setLoadingDetail] = useState(true);
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
 
@@ -20,17 +22,31 @@ const MyTransfers = () => {
 
   const showDetails = (id) => {
     setShow(true);
-
-    getTransfer(id).then((resp) => {
-      setTransferDetail(resp.data);
-    });
+    setLoadingDetail(true);
+    getTransfer(id)
+      .then((resp) => {
+        setTransferDetail(resp.data);
+        setLoadingDetail(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingDetail(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
-    getTransfers().then((resp) => {
-      setTransfers(resp.data);
-      setLoading(false);
-    });
+    setLoading(true);
+    getTransfers()
+      .then((resp) => {
+        setTransfers(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
 
   return (
@@ -82,7 +98,7 @@ const MyTransfers = () => {
                 <Table.Cell>{item.toAccountId}</Table.Cell>
 
                 <Table.Cell>
-                  {moment(transferDetail.transactionDate).format("LLL")}
+                  {moment(item.transactionDate).format("LLL")}
                 </Table.Cell>
                 <Table.Cell>{item.transactionAmount}</Table.Cell>
                 <Table.Cell>{item.description}</Table.Cell>
@@ -112,6 +128,14 @@ const MyTransfers = () => {
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
+                {loadingDetail && (
+                  <tr>
+                    <td colSpan={5}>
+                      <Spinner animation="border" size="sm" variant="danger" />{" "}
+                      Loading...
+                    </td>
+                  </tr>
+                )}
                 <Table.Body>
                   <Table.Row>
                     <Table.HeaderCell>From Account Id</Table.HeaderCell>

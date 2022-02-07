@@ -10,9 +10,11 @@ import {
   getTransfersByCustomerId,
 } from "../../../api/management-transfer";
 import SectionTitle from "../../home/SectionTitle";
+import { toast } from "react-toastify";
 
 const EmpUserTransfers = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingDetail, setLoadingDetail] = useState(true);
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
 
@@ -25,24 +27,43 @@ const EmpUserTransfers = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    getUserById(userId).then((resp) => {
-      console.log(resp.data);
-      setUser(resp.data);
-    });
+    getUserById(userId)
+      .then((resp) => {
+        console.log(resp.data);
+        setUser(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
   const showDetails = (id) => {
     setShow(true);
-
-    getTransferByAccountId(id).then((resp) => {
-      setTransferDetail(resp.data);
-    });
+    setLoadingDetail(true);
+    getTransferByAccountId(id)
+      .then((resp) => {
+        setTransferDetail(resp.data);
+        setLoadingDetail(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingDetail(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
-    getTransfersByCustomerId(userId).then((resp) => {
-      setTransfers(resp.data);
-      setLoading(false);
-    });
+    getTransfersByCustomerId(userId)
+      .then((resp) => {
+        setTransfers(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
 
   return (
@@ -112,6 +133,18 @@ const EmpUserTransfers = () => {
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
+                  {loadingDetail && (
+                    <tr>
+                      <td colSpan={5}>
+                        <Spinner
+                          animation="border"
+                          size="sm"
+                          variant="danger"
+                        />{" "}
+                        Loading...
+                      </td>
+                    </tr>
+                  )}
                   <Table.Row>
                     <Table.HeaderCell>From Account Id</Table.HeaderCell>
                     <Table.Cell>{transferDetail.fromAccountId}</Table.Cell>

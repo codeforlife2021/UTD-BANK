@@ -109,10 +109,16 @@ const EmpUserEdit = () => {
   useEffect(() => {
     //userId nin boş olmadığı veya numeric olduğu kontrol edilse iyi olur.
 
-    getUserById(userId).then((resp) => {
-      console.log(resp.data);
-      setInitialValues(resp.data);
-    });
+    getUserById(userId)
+      .then((resp) => {
+        console.log(resp.data);
+        setInitialValues(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
 
   return (
@@ -323,104 +329,57 @@ const EmpUserEdit = () => {
                             <div className="form-group mb-30">
                               <div className="input-group">
                                 <div className="input-group-prepend"></div>
-                                <Form.Group
-                                  as={Col}
-                                  md={4}
-                                  lg={2}
-                                  className="mb-3"
+                                <ButtonGroup
+                                  aria-label="Basic example"
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "flex-end",
+                                  }}
                                 >
-                                  <Form.Label>Roles</Form.Label>
-
-                                  <div className="mb-3">
-                                    <Form.Check
-                                      inline
-                                      label="Customer"
-                                      type="checkbox"
-                                      name="roles"
-                                      id="customer"
-                                      value="Customer"
-                                      checked={formik.values.roles.includes(
-                                        "Customer"
-                                      )}
-                                      onChange={formik.handleChange}
-                                    />
-                                    <Form.Check
-                                      inline
-                                      label="Employee"
-                                      type="checkbox"
-                                      name="roles"
-                                      id="employee"
-                                      value="Employee"
-                                      checked={formik.values.roles.includes(
-                                        "Employee"
-                                      )}
-                                      onChange={formik.handleChange}
-                                    />
-                                    <Form.Check
-                                      inline
-                                      label="Manager"
-                                      type="checkbox"
-                                      name="roles"
-                                      id="manager"
-                                      value="Manager"
-                                      checked={formik.values.roles.includes(
-                                        "Manager"
-                                      )}
-                                      onChange={formik.handleChange}
-                                    />
-                                  </div>
-                                  <Form.Control.Feedback type="invalid">
-                                    {formik.errors.roles}
-                                  </Form.Control.Feedback>
-                                </Form.Group>
+                                  <Button
+                                    variant="secondary"
+                                    type="button"
+                                    variant="secondary"
+                                    onClick={() => navigate(-1)}
+                                  >
+                                    Cancel
+                                  </Button>
+                                  &nbsp;&nbsp;
+                                  {!initialValues.buildIn && (
+                                    <>
+                                      <Button type="submit" disabled={saving}>
+                                        {saving && (
+                                          <Spinner
+                                            animation="border"
+                                            variant="light"
+                                          />
+                                        )}{" "}
+                                        Save
+                                      </Button>
+                                      &nbsp;&nbsp;
+                                      <Button
+                                        type="button"
+                                        disabled={deleting}
+                                        onClick={handleDelete}
+                                      >
+                                        {deleting && (
+                                          <Spinner
+                                            animation="border"
+                                            variant="light"
+                                          />
+                                        )}{" "}
+                                        Delete
+                                      </Button>
+                                      &nbsp;&nbsp;
+                                    </>
+                                  )}
+                                </ButtonGroup>
                               </div>
                               <div className="help-block with-errors"></div>
                             </div>
                           </div>
 
                           <div className="col-sm-12 col-md-12 col-lg-4">
-                            <ButtonGroup
-                              aria-label="Basic example"
-                              style={{
-                                display: "flex",
-                                justifyContent: "flex-end",
-                              }}
-                            >
-                              <Button
-                                variant="secondary"
-                                type="button"
-                                variant="secondary"
-                                onClick={() => navigate(-1)}
-                              >
-                                Cancel
-                              </Button>
-                              {!initialValues.buildIn && (
-                                <>
-                                  <Button type="submit" disabled={saving}>
-                                    {saving && (
-                                      <Spinner
-                                        animation="border"
-                                        variant="light"
-                                      />
-                                    )}{" "}
-                                    Save
-                                  </Button>
-                                  <Button
-                                    type="button"
-                                    disabled={deleting}
-                                    onClick={handleDelete}
-                                  >
-                                    {deleting && (
-                                      <Spinner
-                                        animation="border"
-                                        variant="light"
-                                      />
-                                    )}{" "}
-                                    Delete
-                                  </Button>
-                                </>
-                              )}
-                            </ButtonGroup>
                             <div id="msgSubmit"></div>
                             <div className="clearfix"></div>
                           </div>

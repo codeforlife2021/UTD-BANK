@@ -74,7 +74,7 @@ const Users = () => {
   };
 
   const handleEdit = (userId) => {
-    navigate(`/usermanagement/${userId}`);
+    window.open(`/usermanagement/${userId}`);
   };
 
   return (
@@ -231,8 +231,11 @@ const Users = () => {
                       <Grid.Column textAlign="center">
                         <Header as="h4">Accounts</Header>
                         <p>New Account,Delete, Update</p>
-
-                        <Button as={Link} to={`/useraccount/${user.id}`}>
+                        <Button
+                          as="a"
+                          href={`/useraccount/${user.id}`}
+                          target="_blank"
+                        >
                           Accounts
                         </Button>
                       </Grid.Column>
@@ -242,8 +245,11 @@ const Users = () => {
                           <br /> Transfers,
                           <br /> TransfersDetails
                         </p>
-
-                        <Button as={Link} to={`/usertransfer/${user.id}`}>
+                        <Button
+                          as="a"
+                          href={`/usertransfer/${user.id}`}
+                          target="_blank"
+                        >
                           Transfers
                         </Button>
                       </Grid.Column>

@@ -60,7 +60,7 @@ const EmpNewAccount = () => {
       .then((resp) => {
         setLoading(false);
         toast("A new Account has been created. ");
-        navigate(`/useraccount/${userId}`);
+        navigate(`/emp-useraccount/${userId}`);
       })
       .catch((err) => {
         console.log(" failed");

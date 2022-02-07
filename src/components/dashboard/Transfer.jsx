@@ -5,14 +5,20 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
 import { getTransfers } from "../../api/transfer-service";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Transfer() {
   const [transfers, setTransfers] = useState([]);
 
   useEffect(() => {
-    getTransfers().then((resp) => {
-      setTransfers(resp.data);
-    });
+    getTransfers()
+      .then((resp) => {
+        setTransfers(resp.data);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        console.log(err.response.data.message);
+      });
   }, []);
 
   const getLastItems = () => {
