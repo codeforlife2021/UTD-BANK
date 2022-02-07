@@ -249,7 +249,6 @@ a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .footer-bg {
   background: var(--color3);
   position: relative;
@@ -258,11 +257,28 @@ a:hover {
 }
 
 /************ FOOTER ************/
-
 footer {
   background-color: var(--color4);
-  padding: 2rem;
-  text-align: center;
+  padding: 0rem;
+}
+
+.footer-list li {
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.footer-content-title h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  text-align: left;
+}
+ol,
+ul {
+  padding-left: 0rem;
 }
 .ajs-header {
   background-color: var(--color1) !important;
