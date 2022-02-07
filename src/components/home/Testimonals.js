@@ -10,6 +10,7 @@ const Testimonals = (props) => {
           title="Clients Feedback"
           description=" Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore"
         />
+        <div className="client-carousel-content">
          <OwlCarousel
             className="owl-theme client-carousel"
             loop
@@ -38,8 +39,9 @@ const Testimonals = (props) => {
               d1="Sienna Miller"
               d2="CTO"
             />
-        </OwlCarousel> 
-      </div>
+        </OwlCarousel>
+        </div>
+        </div>
     </section>
   );
 };
