@@ -201,6 +201,80 @@ a:hover {
   opacity: 0.3;
   z-index: 1;
 }
+.client-carousel.owl-theme .owl-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.client-carousel.owl-theme .owl-nav button {
+  padding: 0;
+  margin: 0;
+  margin-right: 45px;
+  position: relative;
+  line-height: 1;
+  background-color: #fff;
+}
+.client-carousel.owl-theme .owl-nav button:first-child {
+  margin-right: 0;
+}
+.client-carousel.owl-theme .owl-nav button:hover {
+  background: 0 0;
+}
+.client-carousel.owl-theme .owl-nav button:hover span:before {
+  color: #f11a10;
+}
+.client-carousel.owl-theme .owl-nav button span:before {
+  margin-left: 0;
+  font-size: 40px;
+  color: #2b71f3;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.client-carousel.owl-theme .owl-nav button:before {
+  content: "";
+  border-width: 1px;
+  border-color: #b6b6b6;
+  border-style: solid;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0px, -50%);
+  transform: translate(0px, -50%);
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+.client-carousel.owl-theme .owl-nav button:first-child:before {
+  left: auto;
+  right: 45%;
+  -webkit-animation: carousel-left 3s infinite alternate linear;
+  animation: carousel-left 3s infinite alternate linear;
+}
+.client-carousel.owl-theme .owl-nav button:last-child:before {
+  left: 45%;
+  -webkit-animation: carousel-right 3s infinite alternate linear;
+  animation: carousel-right 3s infinite alternate linear;
+}
+.search-any {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+}
+.search-any {
+  border-radius: 20px;
+}
+.search-any h3 span {
+  display: inline-block;
+  border-bottom: 3px rgb(0, 0, 0) solid;
+}
 
 .page-header::before {
   content: "";
