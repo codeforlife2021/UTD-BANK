@@ -1,6 +1,7 @@
 import React from "react";
 import "../../assets/css/home.css";
 import { Link } from "react-router-dom";
+import CustomButton from "../common/CustomButton";
 const Banner = () => {
   return (
     <div className="slider">
@@ -20,9 +21,8 @@ const Banner = () => {
           and your account is automatically credited or debited for each deposit
           and payment
         </p>
-        <Link to="/authentication" style={{ backgroundColor: "e63719" }}>
-          get started
-        </Link>
+
+        <CustomButton title="get Started" link="/authentication"></CustomButton>
       </div>
     </div>
   );

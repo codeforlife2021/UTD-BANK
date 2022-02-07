@@ -66,6 +66,7 @@ const Section = styled.section`
     flex-direction: column;
     gap: 2rem;
     margin-top: 1rem;
+    margin-right: 3rem;
     .box-card-title {
       color: #e63719;
     }
@@ -75,7 +76,7 @@ const Section = styled.section`
       align-items: flex-start;
       &__title {
         display: flex;
-        gap: 1rem;
+        gap: 3rem;
         &__image {
           img {
             margin-top: 12px;

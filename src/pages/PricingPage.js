@@ -4,6 +4,7 @@ import PageHeader from "../components/common/PageHeader";
 import Pricing from "../components/pricing/Pricing";
 import Footer from "../components/common/Footer";
 import Menu from "../components/common/Menu";
+import ScrollToTopOnMount from "../components/common/ScrollToTopOnMount";
 
 const PricingPage = () => {
   return (
@@ -11,7 +12,7 @@ const PricingPage = () => {
       <TopBar />
       <PageHeader image="/assets/images/blog.png" title="Pricing" />
       <Pricing />
-      <Footer />
+      <ScrollToTopOnMount />
     </div>
   );
 };

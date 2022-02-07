@@ -101,16 +101,9 @@ function Navbar() {
                   <>
                     <div className="divider"></div>
                     <li className="nav-text">
-                      <Link to="/manager/users">
+                      <Link to="/usermanagement">
                         <FaIcons.FaUsersCog />
-                        <span>User Management</span>
-                      </Link>
-                    </li>
-
-                    <li className="nav-text">
-                      <Link to="/account-management">
-                        <GiIcons.GiMoneyStack />
-                        <span>Account Management</span>
+                        <span>Management</span>
                       </Link>
                     </li>
                   </>
@@ -119,16 +112,9 @@ function Navbar() {
                   <>
                     <div className="divider"></div>
                     <li className="nav-text">
-                      <Link to="/manager/users">
+                      <Link to="/emp-usermanagement">
                         <FaIcons.FaUsersCog />
-                        <span>User Management</span>
-                      </Link>
-                    </li>
-
-                    <li className="nav-text">
-                      <Link to="/account-management">
-                        <GiIcons.GiMoneyStack />
-                        <span>Account Management</span>
+                        <span>Management</span>
                       </Link>
                     </li>
                   </>

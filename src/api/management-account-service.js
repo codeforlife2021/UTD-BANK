@@ -33,8 +33,14 @@ const getAccountsByCustomerId = (customerId) => {
   });
 };
 
-const updateAccounts = (accountId) => {
-  return axios.put(`${API_URL}account/${accountId}/auth`, {
+const updateAccounts = (accountNo, account) => {
+  return axios.put(`${API_URL}account/${accountNo}/auth`, account, {
+    headers: authHeader(),
+  });
+};
+
+const updateAccountByAcountNo = (accountNo, account) => {
+  return axios.put(`${API_URL}account/${accountNo}/auth`, account, {
     headers: authHeader(),
   });
 };
@@ -52,5 +58,6 @@ export {
   getAccountsByCustomerId,
   deleteAccounts,
   updateAccounts,
+  updateAccountByAcountNo,
   createAccountByUserId,
 };

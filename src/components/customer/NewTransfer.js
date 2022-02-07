@@ -6,16 +6,8 @@ import { Form, Spinner } from "react-bootstrap";
 import MaskInput from "react-maskinput/lib";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {
-  RiLockPasswordLine,
-  RiMailLine,
-  RiPhoneLine,
-  RiMoneyPoundCircleLine,
-} from "react-icons/ri";
-import { FaRegAddressBook } from "react-icons/fa";
-import { MdDescription } from "react-icons/md";
+import { RiMoneyPoundCircleLine } from "react-icons/ri";
 import { GiMoneyStack } from "react-icons/gi";
-import { createAccount } from "../../api/account-service";
 import { createTransfer } from "../../api/transfer-service";
 const NewTransfer = () => {
   const [loading, setLoading] = useState(false);

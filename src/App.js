@@ -40,6 +40,7 @@ function App() {
       <CustomRoutes />
 
       <ToastContainer />
+      <Footer />
     </BrowserRouter>
   );
 }
