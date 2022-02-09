@@ -6,6 +6,7 @@ import { getTransfersbyAccount } from "../../api/transfer-service";
 import { Icon, Table } from "semantic-ui-react";
 import moment from "moment";
 import { toast } from "react-toastify";
+import Pagination from "../common/Pagination";
 const MyAccount = () => {
   const [loading, setLoading] = useState(true);
   const [accounts, setAccounts] = useState([]);
@@ -14,9 +15,7 @@ const MyAccount = () => {
   const navigate = useNavigate();
   const [showDetail, setShowDetail] = useState(false);
   const [showTransfer, setShowTransfer] = useState(false);
-
   const handleClose = () => setShowDetail(false);
-
   const showDetails = (id) => {
     setShowDetail(true);
     getAccount(id)
@@ -41,7 +40,6 @@ const MyAccount = () => {
         console.log(err.response.data.message);
       });
   };
-
   useEffect(() => {
     getAccounts()
       .then((resp) => {
@@ -54,7 +52,12 @@ const MyAccount = () => {
         console.log(err.response.data.message);
       });
   }, []);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(5);
+  const indexOfLast = currentPage * perPage;
+  const indexOfFirst = indexOfLast - perPage;
+  const currentUser = accounts.slice(indexOfFirst, indexOfLast);
+  const totalPagesNum = Math.ceil(accounts.length / perPage);
   return (
     <>
       <Table color="orange">
@@ -69,7 +72,6 @@ const MyAccount = () => {
             <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
           {loading && (
             <tr>
@@ -78,12 +80,13 @@ const MyAccount = () => {
               </td>
             </tr>
           )}
-          {accounts.map((item, index) => (
+          {currentUser.map((item, index) => (
             <Table.Row key={index} className="cursor-hand">
               <Table.Cell>{index + 1}</Table.Cell>
               <Table.Cell>{item.accountNo}</Table.Cell>
               <Table.Cell>{item.accountType}</Table.Cell>
               <Table.Cell>{item.currencyCode}</Table.Cell>
+          
               {item.accountStatusType === "ACTIVE" ? (
                 <Table.Cell textAlign="center">
                   <Icon color="green" name="checkmark" />
@@ -93,7 +96,6 @@ const MyAccount = () => {
                   <Icon color="red" name="close" />
                 </Table.Cell>
               )}
-
               <Table.Cell>{item.balance}</Table.Cell>
               <Table.Cell>
                 <Button
@@ -115,7 +117,9 @@ const MyAccount = () => {
           ))}
         </Table.Body>
       </Table>
-
+      <div>
+        <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
+      </div>
       <Modal
         show={showDetail}
         onHide={() => setShowDetail(false)}
@@ -177,7 +181,6 @@ const MyAccount = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
       <Modal
         show={showTransfer}
         onHide={() => setShowTransfer(false)}
@@ -228,5 +231,4 @@ const MyAccount = () => {
     </>
   );
 };
-
 export default MyAccount;
