@@ -17,6 +17,7 @@ import CustomButton from "../../common/CustomButton";
 import SectionTitle from "../../home/SectionTitle";
 import Spacer from "../../common/Spacer";
 import { toast } from "react-toastify";
+import Pagination from "../../common/Pagination";
 const EmpUserAccounts = () => {
   const [loading, setLoading] = useState(true);
   const [loadingDetail, setLoadingDetail] = useState(true);
@@ -75,6 +76,14 @@ const EmpUserAccounts = () => {
         navigate(-1);
       });
   }, []);
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage] = useState(5);
+  const indexOfLast = currentPage * perPage;
+  const indexOfFirst = indexOfLast - perPage;
+  const currentUser = accounts.slice(indexOfFirst, indexOfLast);
+  const totalPagesNum = Math.ceil(accounts.length / perPage);
   return (
     <>
       <div className="container" style={{ textAlign: "justify" }}>
@@ -120,7 +129,7 @@ const EmpUserAccounts = () => {
                 </td>
               </tr>
             )}
-            {accounts.map((item, index) => (
+            {currentUser.map((item, index) => (
               <Table.Row key={index} className="cursor-hand">
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{item.accountNo}</Table.Cell>
@@ -156,7 +165,9 @@ const EmpUserAccounts = () => {
             ))}
           </Table.Body>
         </Table>
-
+<div>
+          <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
+          </div>
         <Modal
           show={showDetail}
           onHide={() => setShowDetail(false)}
