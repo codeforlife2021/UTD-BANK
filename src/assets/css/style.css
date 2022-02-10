@@ -276,42 +276,43 @@ a:hover {
   border-bottom: 3px rgb(0, 0, 0) solid;
 }
 .pagination {
-    float: right;
-    margin: 0 0 5px;
+  float: right;
+  margin: 0 0 5px;
 }
 .pagination li a {
-    border: none;
-    font-size: 13px;
-    min-width: 30px;
-    min-height: 30px;
-    color: #999;
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 2px !important;
-    text-align: center;
-    padding: 0 6px;
+  border: none;
+  font-size: 13px;
+  min-width: 30px;
+  min-height: 30px;
+  color: #999;
+  margin: 0 2px;
+  line-height: 30px;
+  border-radius: 2px !important;
+  text-align: center;
+  padding: 0 6px;
 }
 .pagination li a:hover {
-    color: #666;
-}   
-.pagination li.active a, .pagination li.active a.page-link {
-    background: #03A9F4;
+  color: #666;
 }
-.pagination li.active a:hover {        
-    background: #0397d6;
+.pagination li.active a,
+.pagination li.active a.page-link {
+  background: #03a9f4;
+}
+.pagination li.active a:hover {
+  background: #0397d6;
 }
 .pagination li.disabled i {
-    color: #ccc;
+  color: #ccc;
 }
 .pagination li i {
-    font-size: 16px;
-    padding-top: 6px
+  font-size: 16px;
+  padding-top: 6px;
 }
 .hint-text {
-    float: left;
-    margin-top: 10px;
-    font-size: 13px;
-} 
+  float: left;
+  margin-top: 10px;
+  font-size: 13px;
+}
 
 .page-header::before {
   content: "";
@@ -413,7 +414,7 @@ ul {
   background: var(--color1);
 }
 .blue-gradient {
-  background: var(--color3);
+  background: var(--color1);
   color: #fff;
 }
 .home-service-start h2 {
@@ -457,7 +458,7 @@ ul {
 }
 
 .blue-gradient:hover {
-  background: var(--color3);
+  background: var(--color1);
   border-color: white;
   color: #fff;
 }
@@ -794,4 +795,7 @@ body {
   display: var(--uirLinkDisplay) !important;
   color: var(--uirLinkTextColor) !important;
   text-decoration: var(--uirLinkTextDecoration) !important;
+}
+.input-group-text {
+  font-size: 1.4rem;
 }

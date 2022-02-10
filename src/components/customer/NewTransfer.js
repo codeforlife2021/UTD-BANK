@@ -6,7 +6,8 @@ import { Form, Spinner } from "react-bootstrap";
 import MaskInput from "react-maskinput/lib";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { RiMoneyPoundCircleLine } from "react-icons/ri";
+import { MdOutlineAccountBox } from "react-icons/md";
+import { AiOutlineIdcard, AiOutlineBarChart } from "react-icons/ai";
 import { GiMoneyStack } from "react-icons/gi";
 import { createTransfer } from "../../api/transfer-service";
 const NewTransfer = () => {
@@ -97,7 +98,9 @@ const NewTransfer = () => {
                               <div className="input-group">
                                 <div className="input-group-prepend">
                                   <span className="input-group-text">
-                                    <i className="flaticon-user"></i>
+                                    <i>
+                                      <MdOutlineAccountBox />
+                                    </i>
                                   </span>
                                 </div>
                                 <Form.Control
@@ -119,7 +122,9 @@ const NewTransfer = () => {
                               <div className="input-group">
                                 <div className="input-group-prepend">
                                   <span className="input-group-text">
-                                    <i className="flaticon-user"></i>
+                                    <i>
+                                      <AiOutlineIdcard />
+                                    </i>
                                   </span>
                                 </div>
 
@@ -142,7 +147,7 @@ const NewTransfer = () => {
                                 <div className="input-group-prepend">
                                   <span className="input-group-text">
                                     <i>
-                                      <GiMoneyStack />
+                                      <AiOutlineBarChart />
                                     </i>
                                   </span>
                                 </div>
@@ -171,7 +176,7 @@ const NewTransfer = () => {
                                 <div className="input-group-prepend">
                                   <span className="input-group-text">
                                     <i>
-                                      <RiMoneyPoundCircleLine />
+                                      <GiMoneyStack />
                                     </i>
                                   </span>
                                 </div>
