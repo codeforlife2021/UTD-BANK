@@ -19,7 +19,7 @@ const UserTransfers = () => {
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(2);
+  const [postsPerPage] = useState(10);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
