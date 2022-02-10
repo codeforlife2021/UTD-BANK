@@ -11,16 +11,17 @@ import {
   getTransfersByCustomerId,
 } from "../../../api/management-transfer";
 import { toast } from "react-toastify";
+import Pagination from "../../common/Pagination";
 
 const UserTransfers = () => {
   const [loading, setLoading] = useState(true);
   const [loadingTransfer, setLoadingTransfer] = useState(true);
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { userId } = useParams();
@@ -32,6 +33,7 @@ const UserTransfers = () => {
       setUser(resp.data);
     });
   }, []);
+
   const showDetails = (id) => {
     setShow(true);
     setLoadingTransfer(true);
@@ -60,6 +62,18 @@ const UserTransfers = () => {
       });
   }, []);
 
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentTransfers = transfers.slice(indexOfFirstPost, indexOfLastPost);
+  console.log(currentTransfers);
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(transfers.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
   return (
     <>
       <div className="container" style={{ textAlign: "justify" }}>
@@ -90,7 +104,7 @@ const UserTransfers = () => {
                 </td>
               </tr>
             )}
-            {transfers.map((item, index) => (
+            {currentTransfers.map((item, index) => (
               <Table.Row key={index} className="cursor-hand">
                 <Table.Cell>{index + 1}</Table.Cell>
                 <Table.Cell>{item.fromAccountId}</Table.Cell>
@@ -113,7 +127,17 @@ const UserTransfers = () => {
               </Table.Row>
             ))}
           </Table.Body>
-
+          <nav>
+            <ul className="pagination">
+              {pageNumbers.map((number) => (
+                <li key={number} className="page-item">
+                  <a className="page-link" onClick={() => paginate(number)}>
+                    {number}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <Modal show={show} onHide={handleClose} animation={false}>
             <Modal.Header closeButton>
               <Modal.Title>Transfer Details</Modal.Title>
