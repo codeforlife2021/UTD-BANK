@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Table, Spinner, Button, Modal } from "react-bootstrap";
+import { Spinner, Button, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getTransfer, getTransfers } from "../../api/transfer-service";
-import Pagination from "../common/Pagination";
+import { Icon, Table } from "semantic-ui-react";
+import moment from "moment";
+import CustomButton from "../common/CustomButton";
+import SectionTitle from "../home/SectionTitle";
+import { toast } from "react-toastify";
 
 const MyTransfers = () => {
   const [loading, setLoading] = useState(true);
+  const [loadingDetail, setLoadingDetail] = useState(true);
   const [transfers, setTransfers] = useState([]);
   const [transferDetail, setTransferDetail] = useState({});
 
@@ -17,118 +22,159 @@ const MyTransfers = () => {
 
   const showDetails = (id) => {
     setShow(true);
-
-    getTransfer(id).then((resp) => {
-      setTransferDetail(resp.data);
-    });
+    setLoadingDetail(true);
+    getTransfer(id)
+      .then((resp) => {
+        setTransferDetail(resp.data);
+        setLoadingDetail(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoadingDetail(false);
+        console.log(err.response.data.message);
+      });
   };
 
   useEffect(() => {
-    getTransfers().then((resp) => {
-      setTransfers(resp.data);
-      setLoading(false);
-    });
+    setLoading(true);
+    getTransfers()
+      .then((resp) => {
+        setTransfers(resp.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        toast("An error occured. Please try again later.");
+        setLoading(false);
+        console.log(err.response.data.message);
+      });
   }, []);
- const [currentPage, setCurrentPage] = useState(1);
-  const [perPage] = useState(5);
-  const indexOfLast = currentPage * perPage;
-  const indexOfFirst = indexOfLast - perPage;
-  const currentUser = transfers.slice(indexOfFirst, indexOfLast);
-  const totalPagesNum = Math.ceil(transfers.length / perPage);
 
   return (
     <>
-      <Link to="/create-transfer">Create a new transfer</Link>
+      <div className="container" style={{ textAlign: "justify" }}>
+        <SectionTitle
+          title="Do you want to create a new transfer?"
+          description="Lorem ipsum dolor sit amet, consectetur adipisicing elit
+              sed do eiusmod agnamqua ptatem consectetur."
+        />
+        <div
+          className="create-transfers"
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "250px",
+            position: "relative",
+          }}
+        >
+          <CustomButton title="Create a new transfer" link="/create-transfer" />
+        </div>
+        <br />
+        <br />
 
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>From transfer</th>
-            <th>To transfer</th>
-            <th>Currency Code</th>
-            <th>Transaction transfer</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {loading && (
-            <tr>
-              <td colSpan={5}>
-                <Spinner animation="border" size="sm" /> Loading...
-              </td>
-            </tr>
-          )}
-          {currentUser.map((item, index) => (
-            <tr key={index} className="cursor-hand">
-              <td>{index + 1}</td>
-              <td>{item.fromAccountId}</td>
-              <td>{item.toAccountId}</td>
-              <td>{item.transactionAmount}</td>
-              <td>{item.currencyCode}</td>
-              <td>{item.description}</td>
+        <Table color="orange">
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>#</Table.HeaderCell>
+              <Table.HeaderCell>From transfer</Table.HeaderCell>
+              <Table.HeaderCell>To transfer</Table.HeaderCell>
+              <Table.HeaderCell>Date</Table.HeaderCell>
+              <Table.HeaderCell>Transaction transfer</Table.HeaderCell>
+              <Table.HeaderCell>Description</Table.HeaderCell>
+              <Table.HeaderCell></Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {loading && (
+              <tr>
+                <td colSpan={5}>
+                  <Spinner animation="border" size="sm" /> Loading...
+                </td>
+              </tr>
+            )}
+            {transfers.map((item, index) => (
+              <Table.Row key={index} className="cursor-hand">
+                <Table.Cell>{index + 1}</Table.Cell>
+                <Table.Cell>{item.fromAccountId}</Table.Cell>
+                <Table.Cell>{item.toAccountId}</Table.Cell>
 
-              <td>
-                <Button variant="primary" onClick={() => showDetails(item.id)}>
-                  Details
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+                <Table.Cell>
+                  {moment(item.transactionDate).format("LLL")}
+                </Table.Cell>
+                <Table.Cell>{item.transactionAmount}</Table.Cell>
+                <Table.Cell>{item.description}</Table.Cell>
 
-      <div>
-        <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} />
+                <Table.Cell>
+                  <Button
+                    variant="primary"
+                    onClick={() => showDetails(item.id)}
+                  >
+                    Details
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+
+          <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal.Header closeButton>
+              <Modal.Title>Transfer Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Table color="orange">
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell colSpan={2}>
+                      <h3>Transfer No : {transferDetail.id}</h3>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                {loadingDetail && (
+                  <tr>
+                    <td colSpan={5}>
+                      <Spinner animation="border" size="sm" variant="danger" />{" "}
+                      Loading...
+                    </td>
+                  </tr>
+                )}
+                <Table.Body>
+                  <Table.Row>
+                    <Table.HeaderCell>From Account Id</Table.HeaderCell>
+                    <Table.Cell>{transferDetail.fromAccountId}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>To Account Id</Table.HeaderCell>
+                    <Table.Cell>{transferDetail.toAccountId}</Table.Cell>
+                  </Table.Row>
+
+                  <Table.Row>
+                    <Table.HeaderCell>Transaction Amount</Table.HeaderCell>
+                    <Table.Cell>{transferDetail.transactionAmount}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>Currency Code</Table.HeaderCell>
+                    <Table.Cell>{transferDetail.currencyCode}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>Description</Table.HeaderCell>
+                    <Table.Cell>{transferDetail.description}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.HeaderCell>Date</Table.HeaderCell>
+                    <Table.Cell>
+                      {moment(transferDetail.transactionDate).format("LLL")}
+                    </Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </Table>
       </div>
-        <Modal show={show} onHide={handleClose} animation={false}>
-          <Modal.Header closeButton>
-            <Modal.Title>transfers Details</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th colSpan={2}>
-                    <h3>transfer No : {transferDetail.id}</h3>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>From Account Id</td>
-                  <td>{transferDetail.fromAccountId}</td>
-                </tr>
-                <tr>
-                  <td>To Account Id</td>
-                  <td>{transferDetail.toAccountId}</td>
-                </tr>
-
-                <tr>
-                  <td>Transaction Amount</td>
-                  <td>{transferDetail.transactionAmount}</td>
-                </tr>
-                <tr>
-                  <td>Currency Code</td>
-                  <td>{transferDetail.currencyCode}</td>
-                </tr>
-                <tr>
-                  <td>Description</td>
-                  <td>{transferDetail.description}</td>
-                </tr>
-                <tr>
-                  <td>Date</td>
-                  <td>{transferDetail.transactionDate}</td>
-                </tr>
-              </tbody>
-            </Table>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Table>
     </>
   );
 };
