@@ -16,6 +16,7 @@
     "flaticon": "^0.1.0",
     "formik": "^2.2.9",
     "magnific-popup": "^1.1.0",
+    "moment": "^2.29.1",
     "owl.carousel": "^2.3.4",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.1",
